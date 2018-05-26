@@ -1,0 +1,321 @@
+<header>
+     <div class="breadcrumb">
+        <div class="line-register"></div>
+         <ul>
+             <li>
+                 <div class="border-img">
+                    <img class="current-img" src="../assets/img/breadcrumb-icon/1db.png" alt="icon-register">
+                </div>
+                <div class="bc-title">  
+                    <span class="current"> 
+                        <span class="number-title">1.</span> Cadastre-se</span>
+                </div>
+             </li> 
+             <li>
+                 <div class="border-img">
+                     <img src="../assets/img/breadcrumb-icon/2db.png" alt="icon-register-car">
+                </div>
+                 <div class="bc-title"> 
+                     <span> <span class="number-title">2.</span> Cadastre seu veículo</span>
+                </div>
+             </li> 
+             <li>
+                 <div class="border-img">
+                    <img src="../assets/img/breadcrumb-icon/3db.png" alt="icon-share">
+                </div>
+                 <div class="bc-title"> 
+                     <span><span class="number-title">3.</span> Compartilhe </span>
+                </div>
+             </li>
+         </ul>
+     </div>
+</header>
+
+<main id="register">
+    <div class="row">
+        <div *ngIf="errorMessage" class="alert animated fadeIn">
+            <i class="fa fa-exclamation" aria-hidden="true"></i>
+            {{errorMessage}}
+        </div>
+        <section id="register-data" class="col s6">
+                <section id="access-data">  
+                    <div class="container">
+                        <div class="title"><span>Dados de acesso</span></div>
+                        <div class="row">
+                            <div class="input-field col s5">
+                                <input [(ngModel)]="user.email" class="validate" id="email" type="text"  placeholder="Ex.: me@example.com"/>
+                                <label class="active" for="email">E-mail<span class="required-stile"> *</span></label>
+                            </div>
+                            <div class="input-field col s5">
+                                <input [(ngModel)]="user.senha" class="validate" id="senha" type="password" placeholder="Crie um senha"/>
+                                <label class="active" for="senha">Senha<span class="required-stile"> *</span></label>
+                            </div>
+                        </div>
+                    </div>
+                    <!--end-container-->
+                </section>
+                <!--end-access-data-->
+
+                <section id="personal-data">
+                    <div class="container">
+                        <div class="title"><span>Dados pessoais</span></div>
+                        <div class="row">
+                            <div class="input-field col s5">
+                                <input [(ngModel)]="user.nome" id="nome" class="validate"
+                                 mask="AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" type="text" placeholder="Seu nome "/>
+                                <label class="active" for="nome">Nome<span class="required-stile"> *</span></label>
+                            </div>
+                            <div class="input-field col s5">
+                                <input [(ngModel)]="user.sobrenome" id="sobrenome" type="text" class="validate"
+                                mask="AAAAAAAAAAAAAAAAAAAAAAAAAAAA"  placeholder="Seu sobremome"/>
+                                <label class="active" for="sobrenome">Sobrenome<span class="required-stile"> *</span></label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="input-field col s5">
+                                <input [(ngModel)]="user.cpf" id="cpf" mask="000.000.000-00" type="text" class="validate"
+                                 placeholder="000.000.000-00"/>
+                                <label class="active" for="cpf">Número CPF<span class="required-stile"> *</span></label>
+                            </div>
+                            <div class="input-field col s5">
+                                <input [(ngModel)]="user.dataNascimento" type="date" class="validate" id="dataNascimento">
+                                <label class="active large-screen active">Data Nascimento<span class="required-stile"> *</span></label>
+                                <label class="active mobile-screen active">Nascimento<span class="required-stile"> *</span></label> 
+                            </div>
+                        </div> 
+                    </div>
+                    <!--end-container-->
+                </section>
+                <!--end-personak-data-->
+
+
+                <section id="contact-data">
+                    <div class="container">
+                        <div class="title"><span>Dados de contato</span></div>
+                        <div class="row">
+                            <div class="input-field col s5">
+                                <input  [(ngModel)]="user.celularP" id="celularP" class="validate"
+                                mask="(00)0-0000-0000" type="text"  placeholder="(00)0-0000-00000"/>
+                                <label class="active" for="celularP">Celular<span class="required-stile"> *</span></label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="input-field col s5">
+                                <input [(ngModel)]="user.telefone" id="telefone" class="validate" 
+                                mask="(00)0000-0000" type="text" placeholder="(00)0000-0000" />
+                                <label class="active" for="telefone">Telefone</label>
+                            </div>
+                            <div class="input-field col s5">
+                                <input  [(ngModel)]="user.celularS" id="celularS" class="validate"
+                                mask="(00)0-0000-0000" type="text"  placeholder="(00)0000-00000">
+                                <label class="active" for="celularS">Celular (recado)</label>
+                            </div>
+                        </div> 
+                    </div>
+                    <!--end-container-->
+                </section>
+                <!--end-contact-data-->
+
+                <section id="adress-data">
+                    <div class="container">
+                        <div class="title"><span>Seu endereco</span></div>
+                        <div class="row">
+                            <div class="input-field col s5">
+                                <input [(ngModel)]="user.cep" id="cep" mask="00.000-000"class="validate"
+                                 type="text"  placeholder="00.000-000">
+                                <label class="active" for="cep">Cep<span class="required-stile"> *</span></label>
+                            </div>
+                            <div class="btn-cep col s5">
+                                <button (click)="searchCep()" class="btn waves-effect waves-light">
+                                   <i class="fa fa-search" aria-hidden="true"></i> Pesquisar cep  
+                                </button>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="input-field col s5 tooltipped" data-tooltip="Faça primeiro a pesquisa de CEP">
+                                <input [(ngModel)]="user.rua" [disabled]="!user.rua" class="validate"
+                                value={{user.rua}}  id="rua" type="text" placeholder="Nome da rua/avenida">
+                                <label class="active" for="rua">Rua/Avenida<span class="required-stile"> *</span></label>
+                            </div>
+                            <div class="input-field col s5">
+                                <input [(ngModel)]="user.numero" id="numero" class="validate"
+                                mask="000" type="text" placeholder="000">
+                                <label class="active" for="numero">Número<span class="required-stile"> *</span></label>
+                            </div>
+                        </div> 
+                        <div class="row">
+                            <div class="input-field col s5 tooltipped" data-tooltip="Faça primeiro a pesquisa de CEP">
+                                <input [(ngModel)]="user.bairro" class="validate"
+                                 [disabled]="!user.bairro" id="bairro" type="text" 
+                                mask="AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"placeholder="Nome do bairro"/>
+                                <label class="active" for="bairro">Bairro<span class="required-stile"> *</span></label>
+                            </div>
+                            <div class="input-field col s5">
+                                <input [(ngModel)]="user.complemento" id="complemento" class="validate"
+                                 type="text"placeholder="Apto, bloco, etc..."/>
+                                <label class="active" for="cidade">Complemento</label>
+                            </div>
+                        </div> 
+                        <div class="row">
+                            <div class="input-field col s5 tooltipped" data-tooltip="Faça primeiro a  pesquisa de CEP">
+                                <input [(ngModel)]="user.cidade" [disabled]="!user.cidade"class="validate" 
+                                 id="cidade" type="text" 
+                                mask="AAAAAAAAAAAAAAAAAAAAAAAAA"  placeholder="Nome da cidade"/>
+                                <label class="active" for="cidade">Cidade<span class="required-stile"> *</span></label>
+                            </div>
+                            <div class="input-field col s5 tooltipped" data-tooltip="Faça primeiro a  pesquisa de CEP">
+                                <input [(ngModel)]="user.estado" [disabled]="!user.estado" class="validate"
+                                 id="estado" mask="AAAAAAAAAAAAAAAAAAAAAAAAAA" type="text"  placeholder="Nome do estado"/>
+                                <label class="active" for="estado">Estado<span class="required-stile"> *</span></label>
+                            </div>
+                        </div> 
+                    </div>
+                    <!--end-container-->
+                </section>
+                <!--end-adress-data-->
+
+                <section id="profile-photo">
+                    <div class="container">
+                        <div class="title"><span>Foto do perfil<span class="required-stile red-text"> *</span></span></div>
+                        <div class="row">
+                            <div class="file-field input-field col s5">
+                                <div class="btn">
+                                    <i class="fa fa-camera-retro" aria-hidden="true"></i>
+                                    <input type="file" (change)="fileChangeEvent($event)"
+                                    id="fotoPerfil">
+                                </div>
+                                <div class="file-path-wrapper">
+                                    <input  class="file-path"
+                                      type="text" placeholder="Selecione uma foto">
+                                </div>
+                            </div>
+                            <div class="explain col s3">
+                                <div class="explain-img">
+                                    <img src="../assets/img/icon-explain-car/002-photo.png" alt="photo-icon">
+                                </div>
+                                <div class="explain-text">
+                                    <div class="title"><span>Mande sua foto!</span></div>
+                                    <div><span>
+                                        Envie uma foto de seu rosto para 
+                                        ser a foto de perfil e para
+                                        sua melhor identificação
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--end-container-->
+                </section>
+                <!--end-profile-photo-->
+
+                <section id="cnh-data">
+                    <div class="container">
+                        <div class="title"><span>Dados CNH</span></div>
+                        <div class="row">
+                            <div class="input-field col s5">
+                                <input [(ngModel)]="user.numCNH" id="numCNH" mask="00000000000" class="validate"
+                                type="text" placeholder="Digite aqui o número"/>
+                                <label class="active">Número CNH<span class="required-stile"> *</span>
+                                    <i class="fa fa-question" aria-hidden="true" 
+                                        (click)="showCnhImage()" (mouseleave)="hideCnhImage()"></i>
+                                </label>
+                            </div>
+                             <div class="input-field col s5">
+                                <input [(ngModel)]="user.senhaCNH" id="senhaCNH" mask="00000000000" class="validate"
+                                 type="text"  placeholder="Digite aqui a senha"/>
+                                <label class="active">Senha CNH<span class="required-stile"> *</span>
+                                    <i class="fa fa-question" aria-hidden="true" 
+                                        (click)="showCnhImage()" (mouseleave)="hideCnhImage()"></i>
+                                </label>
+                            </div>
+                            
+                        </div>
+                        <div *ngIf="clickedBtn"  class="row animated bounce">
+                           <div class="cnh-image col s5">
+                                <img src="../assets/img/registration-page/cnh-frente.jpg" alt="chn-1"/>
+                            </div>
+                            <div class="cnh-image col s5">
+                                <img src="../assets/img/registration-page/cnh-verso.jpg" alt="cnh-2"/>
+                            </div>
+                        </div>
+                    </div>
+                    <!--end-container-->
+                </section>
+                <!--end-cnh-data-->
+
+                <div class="submit-button container">
+                     <div *ngIf="checkData" class="wait">
+                        <span>Aguarde...</span>
+                        <div class="progress">
+                            <div class="indeterminate"></div>
+                        </div>
+                    </div>
+                    <button *ngIf="!checkData" (click)="registerUser()" class="btn waves-effect waves-light" name="action">
+                        <span> Salve e continue  </span>
+                        <i class="fa fa-long-arrow-right right" aria-hidden="true"></i>
+                    </button>
+                    <p class="form-legal">
+                        Ao clicar em "continuar" concordo com os 
+                        <a href="#modal1">
+                            <span class="terms"> Termos de Serviço </span>
+                        </a>
+                    </p>
+                </div>   
+
+                <div id="modal1" class="modal">
+                    <div class="modal-content">
+                    <h5>Termos de Serviço - Lokkr</h5>
+                    <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
+                        sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+                        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi 
+                        ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit
+                        in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
+                        Excepteur sint occaecat cupidatat non proident, 
+                        sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
+                    </div>
+                    <div class="modal-footer">
+                    <a href="javascript:void(0);" (click)="toCloseModal()" class="waves-effect waves-red btn-flat">
+                        <i class="fa fa-times" aria-hidden="true"></i></a>
+                    </div>
+                </div>
+          
+        </section>
+        <!--end-register-data--> 
+        
+    <section *ngIf="!isUpdate" id="alternative-way" class="col s6">
+        <div class="container">
+            <div class="middle-text"><hr>ou<hr></div>
+            <div class="other-register">
+                 <div class="fb"> 
+                    <button class="btn waves-effect waves-light" (click)="show()">
+                        Cadastrar com Facebook
+                        <i class="fa fa-facebook left" aria-hidden="true"></i>
+                    </button>
+                </div>
+                <div class="ggle"> 
+                    <button class="btn waves-effect waves-light" >
+                        Cadastrar com Google
+                        <img class="left icon-ggle" src="../assets/img/google_icon (pixabay).png" alt="icon-google"/>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="modal-sucess"> 
+        <div id="modalRegister" class="modal">
+             <div class="icon-modal">
+                <i class="material-icons">done</i>
+            </div>
+            <div class="modal-content">
+                <h4>{{msgModal}}</h4>
+            </div>
+            <div class="modal-footer">
+                <a href="javascript:void(0);" class="modal-action modal-close waves-effect waves-green btn-flat">Ok</a>
+            </div>
+        </div>
+    </section>      
+
+</div>
+</main>

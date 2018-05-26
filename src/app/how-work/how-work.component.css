@@ -1,0 +1,283 @@
+/*<---------MAIN---------->*/
+#how-hork {
+	overflow-x: hidden;
+	color: #484848;
+	font-family: 'Lato', sans-serif;
+}
+
+
+/*<------GENERICS-ELEMENTS------->*/
+#how-hork .center-text {
+	text-align: center;
+}
+
+
+#how-hork .btn {
+    text-transform: none;
+    margin-top: 15px;
+    background-color: #24559a;
+    height: 46px;
+    margin: 0 30px;
+}
+
+#how-hork .btn a {
+    color: white!important;
+    font-weight: 100;
+}
+
+#how-hork .btn img {
+    object-position: 0 4px;
+    width: 25px;
+    height: 25px;
+}
+
+#how-hork .horizontal-line {
+	box-shadow: 0 0 1px 1px rgba(200,200,200,0.4);
+	width: 70%;
+    margin: 20px 15% 0 15%;
+}
+
+#how-hork .left-align {
+    margin-left: -10%;
+}
+/*<------------MAIN------------->*/
+
+/*<----HEADER-HOW-WORK------>*/
+
+#header-how-work .title-wrapp {
+	padding-top: 232px;
+    font-weight: 600;
+    color: white;
+    text-transform: uppercase;
+}
+
+ #header-how-work .main-title {
+    font-size: 47px;
+ }
+
+
+#header-how-work .parallax-container {
+    height: 500px;
+}
+
+#header-how-work .parallax img {
+    width: 100%;
+    height: 145%;
+    bottom: -26px;
+    filter: blur( 3px );
+}
+
+#header-how-work .btn-wrapp {
+    margin-top: 114px;
+}
+
+/*<----HOW-USE----->*/
+
+#how-use {
+    margin-left: 3%;
+}
+
+#how-use .street-img {
+    background: url("/../assets/img/how-work/7.jpg");
+    padding: 1px 41px 1024px 0px;
+    background-size: 100% 26%;
+    position: absolute;
+    left: 50%;
+    margin-left: -22px;
+    z-index: -1;
+}
+
+#how-use .divisor-line {
+    text-align: center;
+}
+
+#how-use .content-wrapper {
+    width: 326px;
+}
+
+#how-use .left-side {
+    float: right;
+}
+
+#how-use .right-side {
+    margin-left: 30px;
+}
+
+#how-use .left-side .img-step {
+    margin-left: -80px;
+}
+
+#how-use .left-side .subtitle-text::after {
+    content: '';
+    background-color: cadetblue;
+    border-radius: 50%;
+    padding: 3px 0 7px 10px;
+    position: absolute;
+    margin-top: 62px;
+    left: 50%;
+    margin-left: -18px;
+}
+
+#how-use .right-side .subtitle-text::after {
+    content: '';
+    background-color: #c0c0c0;
+    border-radius: 50%;
+    padding: 3px 0 7px 10px;
+    position: absolute;
+    margin-top: 62px;
+    left: 50%;
+    margin-left: 5px;
+}
+
+#how-use .right-side .img-step {
+    margin-left: 286px;
+}
+
+#how-use .step-list li .img-step {
+    width: 50px;
+    height: 50px;
+    border: 1px solid #16b6f9;
+    border-radius: 50%;
+    padding: 8px;
+    position: absolute;
+}
+
+#how-use .step-list li .img-step img{
+    width: 100%;
+    height: 100%;
+    color: #16b6f9;
+}
+
+#how-use .title-text {
+    margin: 50px 0;
+}
+
+#how-use .title-text h5 {
+    font-size: 28px;
+}
+
+#how-use .step-list li .subtitle-text {
+    font-size: 23px;
+}
+
+#how-use .step-list li .text-content {
+    font-size: 16px;
+}
+
+
+/*---RESPONSIVE---*/
+@media only screen and (max-width: 1050px) {
+    #header-how-work .parallax-container {
+        height: 400px;
+    }
+    #header-how-work .btn-wrapp {
+        margin-top: 30px;
+    }
+}
+
+@media only screen and (max-width: 920px) {
+    #header-how-work .main-title {
+        font-size: 35px;
+    }
+    #header-how-work .parallax-container {
+        height: 300px;
+    }
+    #header-how-work .title-wrapp {
+        padding-top: 134px;
+    }
+}
+
+@media only screen and (max-width:870px) {
+    #header-how-work .title-wrapp {
+        padding-top: 100px;
+    }
+     #header-how-work .btn-wrapp {
+        margin-top: 62px;
+    }
+    #how-use .divisor-line,
+    #how-use .left-side .subtitle-text::after,
+    #how-use .right-side .subtitle-text::after {
+        display: none;
+    }
+    #how-use .row .col.s6 {
+        width: 100%;
+    }
+    #how-use .left-side,
+    #how-use .right-side {
+        margin-left: 100px;
+        float: none;
+    }
+    #how-use .left-side .img-step,
+    #how-use .right-side .img-step {
+        margin-left: -80px;
+    }
+    #how-use .content-wrapper {
+        width: 100%; 
+    }
+    #how-use .title-text {
+        text-align: initial;
+    }
+    #how-use .step-list li .text-content p {
+        text-align: justify;
+    }
+    #how-work .horizontal-line {
+        box-shadow: 0 0 1px 1px rgb(200, 200, 200);
+        width: 90%;
+        margin: 20px 15% 0 -9%;
+    }
+    #how-use .content-wrapper {
+        width: 95%;
+    }
+}
+
+@media only screen and (max-width:610px) {
+    #how-use {
+        margin-left: -3%;
+    }
+    #how-use .horizontal-line {
+        width: 95%;
+        margin: 20px 15% 0 -14%;
+    }
+    #how-use .content-wrapper {
+        width: 90%;
+    }
+}
+
+@media only screen and (max-width:530px) {
+    #header-how-work .parallax img {
+        bottom: 38px;
+    }
+    #header-how-work .main-title {
+        font-size: 30px;
+    }
+    #header-how-work .title-wrapp {
+        padding-top: 46px;
+    }
+    #header-how-work .btn-wrapp,
+    #header-how-work .btn-wrapp .btn {
+        margin-top: 15px;
+    }
+
+    #header-how-work .parallax-container {
+        height: 250px;
+    }
+    #how-use {
+        margin-left: -3%;
+    }
+    #how-work .horizontal-line {
+        width: 150%;
+        margin: 20px 15% 0 0;
+    }
+    #how-use .title-text {
+        margin-left: -82px;
+    }
+    #how-use .content-wrapper {
+        width: 80%;
+    }
+}
+
+@media only screen and (max-width:400px) {
+    #how-use .content-wrapper {
+        width: 80%;
+    }
+}

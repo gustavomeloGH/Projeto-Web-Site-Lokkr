@@ -1,0 +1,366 @@
+
+<main id="dashboard">
+	<section id='global-wrapper'>
+		<aside id="aside-wrapper">
+			<img class="profile-img" src="{{user?.fotoPerfil}}" alt="">
+			<div class="dashboard-title"><span>Meu dashboard</span></div>
+			<!--top nav -->
+			
+      		<ul>
+				<li [class.active]="optionClick == 0" (click)="changeOptionClick(0)">
+					<div  class="nav-item">
+						<i class="material-icons">feedback</i>
+						<span>Notificações</span>
+					</div>
+				</li>
+				<li [class.active]="optionClick == 1" (click)="changeOptionClick(1)">	
+					<div  class="nav-item">
+						<i class="material-icons">local_atm</i>
+						<span>Solicitações</span>
+					</div>
+				</li>
+				<li class="separator"></li>
+				<li [class.active]="optionClick == 2" (click)="changeOptionClick(2)">
+					<div  class="settings nav-item">
+						<i class="material-icons">person</i>
+						<span>Minha conta</span>
+					</div>
+				</li>
+				<li (click)="goToSearch()">
+					<div  class="nav-item">
+						<i class="material-icons">search</i>
+						<span>Buscar carro</span>
+					</div>
+				</li>
+				<li (click)="goToHowWorks()">
+					<div class="nav-item">
+						<i class="material-icons">help_outline</i>
+						<span>Como usar?</span>
+					</div>
+				</li>
+			</ul>
+		</aside>
+		<div *ngIf="!loaded" class="progress-wrapper">
+			<div class="progress progress-car">
+				<div class="indeterminate"></div>
+			</div>
+		</div>
+		
+		<main id="main" *ngIf="loaded">
+
+				<section *ngIf="optionClick == 0" id="news">
+					<article class="news-wrapper">
+							<div class="title">
+									<span><h5>Solicitação de carro que você fez:</h5></span>
+							</div>
+							<div class="row">
+
+								<div *ngIf="contentCheck == 1" class="news-ok col s6">
+									<div class="container-wrapper">
+										<ul class="list-box">
+											<li *ngFor="let currSolct of isOpened(true, 'thisSolicitationData')">
+
+												<div *ngIf="currSolct.share.status === 5" class="evaluation overlay">
+													<div class="text-info">
+														<span>Verificamos que o carro já foi entregue!
+																<br>Avalie o carro:
+														</span>
+														<div class="evaluation-range">
+															<div class="rating">
+																<span (click)="sendEvaluation(1, currSolct)">☆</span>
+																<span (click)="sendEvaluation(2, currSolct)">☆</span>
+																<span (click)="sendEvaluation(3, currSolct)">☆</span>
+																<span (click)="sendEvaluation(4, currSolct)">☆</span>
+																<span (click)="sendEvaluation(5, currSolct)">☆</span>
+															</div>
+														</div>
+													</div>								
+												</div>
+
+												<div class="style-new" (click)="goToCarViewFromSolicitation(currSolct.share.proprietarioKey)">
+													<div class="row">
+														<div class="content-img col s3">
+															<img src="{{currSolct.car.fotosCarro[0]}}"  alt="">
+														</div>
+														<div class="content-text col s7 offset-s2">
+															<div class="row">
+																<span class="bold uppercase">{{currSolct.car.marca}} - </span>
+																<span class="bold">{{currSolct.car.modelo.substr(0, 16)}}. - </span>
+																<span class="bold">{{currSolct.car.ano}}</span><br>
+																<br><span class="bold">R$ {{currSolct.car.preco}} <small>/por dia</small></span>
+																<br><span>Data: <span class="small-min">{{currSolct.share.dataInicial | date:'dd/MM/yyyy'}} à {{currSolct.share.dataFinal | date:'dd/MM/yyyy'}}</span></span>
+															</div>	
+															<div class="row">
+																<span class="color-gray">Situação: 
+																	<span class="bold"  [ngClass]="currSolct.share.status === 0 ? 'red-text' : 'green-text' "> 
+																		{{getStatusName(currSolct.share.status)}}
+																	</span>
+																</span>
+															</div>
+														</div>
+													</div>
+												</div>
+											</li>
+										</ul>
+									</div>
+								</div>
+								<!--news-ok-->
+
+								<div *ngIf="contentCheck == 2" class="news-notOk notOk col s6">
+									<i class="material-icons">sentiment_very_dissatisfied</i>
+									<div>
+										<span>Você ainda não fez nenhuma solicitação de carro!<br> O que está esperando?</span>
+									</div>
+								</div>
+								<!--news-notOK-->
+
+								<div class="historic col s4 offset-s2">
+									<ul>
+										<li class="center-text">
+											 <span>
+												<i class="material-icons">playlist_add_check</i>
+											 	<span>Histórico</span>
+											 </span>
+										</li>
+										<li *ngFor="let historic of isOpened(false, 'thisSolicitationData')"> 
+											<span>{{historic.car.marca}}</span>
+											<span>{{historic.car.modelo.substr(0, 16)}}.</span>
+											<span>R$ {{historic.car.preco}} <small> /por dia</small></span><br>
+											<span>Data: {{historic.share.dataInicial | date:'dd/MM/yyyy'}} - {{historic.share.dataFinal  | date:'dd/MM/yyyy'}}</span><br>
+											<span>Situação: 
+												<span class="bold" [ngClass]="historic.share.status === 2 || historic.share.status === 6 ? 'green-text' : 'red-text'"> 
+													{{getStatusName(historic.share.status)}}
+												</span>
+											</span>
+										</li>
+									</ul>
+								</div>
+								<!--historic-->
+
+							</div>
+							<!--row-->
+
+					</article>
+					<!--news-wrapper-->
+			 </section>
+			 <!--news-->
+			
+
+			<section *ngIf="optionClick == 1" id="solicitation">
+				<div class="title">
+						<span><h5>Solicitações de empréstimo:</h5></span>
+				</div>
+
+				<div class="row">
+
+					<div *ngIf="contentCheck == 1" class="container-wrapper  col s6" (click)="openSolicitationData()">
+						<ul class="list-box">
+							<li *ngFor="let currRqst of isOpened(true, 'thisRequestsData')">
+
+								<div *ngIf="currRqst.share.status === 4" class="confirm-delivery overlay">
+									<div class="text-info">
+										<span>Verificamos pela data, que o aluguel já foi realizado!
+												<br>Confirme a entrega do carro.
+										</span>
+										<div class="confirm-button">
+											<a (click)="carDeliveryConfirm(currRqst)" href="javascript:void(0);" 
+												class="waves-effect btn-flat">
+												<i class="material-icons green-text">done</i>
+											</a>
+										</div>
+									</div>
+								</div>
+
+
+								<div (click)="setSelectUser(currRqst) " class="style-box">
+									
+									<div class="row">
+										<div class="content-request">	
+											<div class="content-img col s3">
+												<img src="{{currRqst.user.fotoPerfil}}"  alt="">
+											</div>
+											<div class="content-text col s7 offset-s2">
+												<div class="row">
+													<span class="bold">{{currRqst.user.nome}}</span> 
+													<span class="bold">{{currRqst.user.sobrenome}}</span> 
+													<br><span>{{currRqst.user.rua.substr(0, 13)}}, {{currRqst.user.bairro}} - Nº{{currRqst.user.numero}} </span>
+													<br><span>Data: {{currRqst.share.dataInicial  | date:'dd/MM/yyyy'}} à {{currRqst.share.dataFinal | date:'dd/MM/yyyy'}} </span>
+												</div>	
+												<div class="row">
+													<span>Situação: 
+														<span class="bold" [ngClass]="currRqst.share.status === 0 ? 'red-text' : 'green-text' "> 
+															{{getStatusName(currRqst.share.status)}}
+														</span>
+													</span>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</li>
+						</ul>
+					</div>
+					<!--solicitation-ok-->
+
+					<div *ngIf="contentCheck == 2 && selectRequest !== undefined"  class="shared-data container">
+						<div class="row">
+							<div class="img-data col s3">
+								<img src="{{selectRequest.user.fotoPerfil}}"  alt="">
+							</div>
+							<div class="profile-data col s9">
+								<ul>
+									<li class="title-data">Dados Pessoais:</li>
+									<li><span>{{selectRequest.user.nome}} {{selectRequest.user.sobrenome}}</span></li>
+									<li><span>{{selectRequest.user.rua}} nº{{selectRequest.user.numero}} {{selectRequest.user.bairro}}</span></li>
+									<li class="title-data">Contato</li>
+									<li><span>{{selectRequest.user.email}}</span></li>
+									<li><span>Telefone: {{selectRequest.user.celularP}} {{selectRequest.user.celularS}}</span></li>
+									<li class="title-data">Horário da locação:</li>
+									<li>Inicial: {{selectRequest.share.dataInicial  | date:'dd/MM/yyyy'}} - {{selectRequest.share.horaInicial}}</li>
+									<li>Final: {{selectRequest.share.dataFinal  | date:'dd/MM/yyyy'}} - {{selectRequest.share.horaFinal}}</li>
+								</ul>
+								<div class="row btn-submit" *ngIf="selectRequest.share.status === 0" >	
+									<div class="ask-solicitation">
+										<span> Aceitar a solicitação? </span>
+									</div>
+									<div class="col s6">
+										<button (click)="replyRequest(true)" class="waves-effect waves-effect btn agree">
+										<i class="material-icons">thumb_up</i>
+										Aceitar</button>
+									</div>
+									<div class="col s6">
+										<button (click)="replyRequest(false)" class="waves-effect waves-effect btn recuse">
+										<i class="material-icons">thumb_down</i>
+										Recusar </button>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!--solicitation-OK-shared-data-->
+
+					<div *ngIf="contentCheck == 3" class="solicitation-notOk notOk  col s6">
+						<i class="material-icons">sentiment_very_dissatisfied</i>
+						<div>
+								<span>Você ainda não recebeu uma solicitação!<br> Fique tranquilo(a), não demora muito.</span>
+						</div>
+					</div>
+					<!--solicitation-notOK-->
+
+					<div *ngIf="contentCheck == 4" class="register-car  col s6">
+						<div class="register-car-notOk notOk">
+							<i class="material-icons grey-text">sentiment_very_dissatisfied</i>
+							<div>
+								<span class="grey-text">Você ainda não registrou o seu carro!</span>
+								<div class="row">
+									<button class="waves-effect waves-effect btn" 
+									(click)="goToRegisterCar()">Cadastre aqui </button>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!--register-car-->
+
+					<div *ngIf="contentCheck !== 2" class="historic col s4 offset-s2">
+						<ul>
+							<li class="center-text">
+								<span>
+								<i class="material-icons">playlist_add_check</i>
+								<span>Histórico</span>
+								</span>
+							</li>
+							<li *ngFor="let historic of isOpened(false, 'thisRequestsData')"> 
+								<span>{{historic.user.nome}}</span>
+								<span>{{historic.user.sobrenome}}</span>
+								<span>{{historic.user.rua.substr(0, 13)}}</span><br>
+								<span>Data: {{historic.share.dataInicial | date:'dd/MM/yyyy'}} - {{historic.share.dataFinal  | date:'dd/MM/yyyy'}}</span><br>
+								<span>Situação: 
+									<span class="bold" [ngClass]="historic.share.status === 2 || historic.share.status === 6 ? 'green-text' : 'red-text'"> 
+										{{getStatusName(historic.share.status)}}
+									</span>
+								</span>
+							</li>
+						</ul>
+					</div>
+					<!--historic-->
+
+			   </div>
+			   <!--end-row-->
+
+			</section>
+			<!--solicitation-->
+						
+			<section *ngIf="optionClick == 2" id="settings">
+				<div class="title">
+					<span><h5>Configurações de conta</h5></span>
+				</div>
+				<div class="list-settings container">
+					<ul>
+						<li (click)="goToRegister()">
+							<a href="javascript:void(0);" class="btn" >
+								<i class="material-icons left">person_outline</i>Alterar meus dados pessoais
+							</a>
+						</li>
+						<li *ngIf="car" (click)="goToNewCar()">
+							<a href="javascript:void(0);" class="btn">
+								<i class="material-icons left">drive_eta</i>Alterar meu dados do carro
+							</a>
+						</li>
+						<li *ngIf="car"  (click)="goToCarView()">
+							<a href="javascript:void(0);" class="btn" >
+								<i class="material-icons left">playlist_add_check</i>Ver especificações do carro
+							</a>
+						</li>
+						<li (click)="deleteAccount(false)" class="remove-account">
+							<a href="javascript:void(0);" class="btn">
+								<i class="material-icons left red-icon">sentiment_very_dissatisfied</i> 
+								<span>Desativar minha conta</span>
+							</a>
+						</li>
+					</ul>
+				</div>
+			</section>
+			<!--settings-->
+
+		</main>
+
+	</section>
+
+
+  	<section id="modal-dashboard"> 
+		<div id="modalDashboard" class="modal">
+			<div class="icon-modal">
+				<i *ngIf="modalMsg.includes('sucesso')" class="material-icons success-icon">done</i>
+                <span *ngIf="!modalMsg.includes('sucesso')" class="error-icon">!</span>
+			</div>
+			<div class="modal-content">
+				<h4 style="white-space: pre;">{{modalMsg}}</h4>
+			</div>
+			<div class="modal-footer">
+				<a (click)="rejectOtherRequestSameTime()" href="javascript:void(0);" 
+				class="modal-action modal-close waves-effect btn-flat"
+                [ngClass]="modalMsg.includes('sucesso') ? 'green' : 'red'" >Ok</a>
+			</div>
+		</div>
+	</section>
+
+
+	<section id="modal-dashboard"> 
+		<div id="modalDashboard-delete" class="modal">
+			<div class="icon-modal">
+				<span class="error-icon">!</span>
+			</div>
+			<div class="modal-content">
+				<h4>Apagando sua conta, você estará excluindo todas as suas futuras oportunidades de 
+					<span class="bold"> alugar </span> e ganhar <span class="bold"> dinheiro </span> com aluguel de carro! 
+					<br><span class="bold">Você realmente quer abrir mão de todos os benefícios Lokkr? </span> 
+				</h4>
+			</div>
+			<div class="modal-footer">
+				<a (click)="deleteAccount(true)" href="javascript:void(0);" 
+				class="modal-action modal-close waves-effect btn-flat red" >Ok</a>
+			</div>
+		</div>
+	</section>
+
+</main>

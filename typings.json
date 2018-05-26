@@ -1,0 +1,6 @@
+{
+  "globalDependencies": {
+    "firebase": "registry:dt/firebase#2.4.1+20160510002910",
+    "google.maps": "registry:dt/google.maps#3.25.0+20161208205818"
+  }
+}

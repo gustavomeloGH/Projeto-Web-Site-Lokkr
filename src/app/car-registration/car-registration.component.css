@@ -1,0 +1,660 @@
+@import url('https://fonts.googleapis.com/css?family=Lato');
+
+
+/*--------->HEADER<--------*/
+
+.breadcrumb {
+    background-color: #eeeeee;
+    width: 80%;
+    margin-left: 143px;
+}
+
+.breadcrumb ul {
+    margin-top: 50px;
+    margin-left: 24%;
+}
+
+.breadcrumb li {
+    padding: 10px;
+    margin-left: -4%;
+    text-align: center;
+    display: inline-block;
+    margin-right: 10%;
+}
+
+.line-register-car {
+    position: absolute;
+    border-top: 4px solid #bfbfbf;
+    padding: 230px;
+    top: 143px;
+    left: 45%;
+    margin-left: -146px;
+}
+
+.breadcrumb img {
+    padding: 4px;
+    border-radius: 50%;
+    border: 2px solid silver;
+    height: 40px;
+    width: 40px;
+}
+
+.breadcrumb .border-img {
+    border-radius: 50%;
+    width: 44px;
+    position: relative;
+    height: 43px;
+    margin-left: 38%;
+    background-color: #eeeeee;
+    margin-bottom: 8px;
+    border: 2px solid white;
+}
+
+.breadcrumb .bc-title {
+    color: #757575;
+    text-transform: uppercase;
+    margin-top: -18px;
+}
+
+.breadcrumb .bc-title span {
+    font-size: 14px;
+}
+
+.breadcrumb .bc-title  .number-title {
+    font-size: 30px;
+}
+
+.breadcrumb .current .number-title {
+    font-weight: bolder;
+   
+}
+
+.breadcrumb .current {
+    color: #35bef7;
+    font-weight: 500;
+}
+
+.breadcrumb .current-img {
+    border: 2px solid #35bef7;
+}
+
+
+
+/*---->ALL<-----*/
+
+#register-car .title {
+    margin-bottom: 20px;
+}
+
+#register-car .title span {
+    text-transform: uppercase;
+    font-size: 17px;
+    color: #24559a;
+}
+
+/*---PROGRESS-WAIT----*/
+
+#register-car .container {
+    margin-bottom: 40px;
+}
+
+#register-car .progress {
+    margin: 15px auto!important;
+    width: 38%;
+}
+
+#register-car .progress .indeterminate {
+    background-color: rgb(43, 156, 244);
+}
+#register-car .wait {
+    text-align: center;
+}
+
+/*-->INPUT-STYLES<--*/
+#register-car .input-field input[type=text]:focus {
+     border-bottom: 1px solid lightgray;
+     box-shadow: 0 1px 0 0 lightgray;
+}
+
+#register-car .input-field input[type=text].valid {
+     border-bottom: 1px solid silver;
+     box-shadow: 0 1px 0 0 silver;
+}
+
+#register-car input {
+    width: 300px;
+    height: 40px;
+    border-radius: 2px;
+    margin-bottom: 10px;
+}
+
+ #register-car .input-field label{
+    color:  #757575;
+    font-size:17px;
+}
+
+
+#register-car [type="radio"]:checked + label:after, 
+#register-car [type="radio"].with-gap:checked + label:after,
+#register-car input[type=range] + .thumb {
+    background-color: #1565c0 ;
+}
+
+#register-car [type="radio"]:checked + label:after, 
+#register-car [type="radio"].with-gap:checked + label:before, 
+#register-car [type="radio"].with-gap:checked + label:after {
+    border: 2px solid #0d47a1;
+}
+
+
+#register-car [type="checkbox"][_ngcontent-c3]:checked + label[_ngcontent-c3]:before {
+    border-right: 2px solid #1565c0;
+    border-bottom: 2px solid #1565c0;
+}
+
+#register-car .explain img {
+    height: 60px;
+    width: 60px;
+}
+
+
+.required-stile {
+    color: red!important;
+}
+
+.option-label {
+    margin-top: -39px;
+}
+
+/*--ALERT-MSG--*/
+#register-car  .alert {
+    padding: 20px;
+    background-color: rgba(255, 230, 230, 0.71);
+    color: rgba(255, 0, 0, 0.82);
+    margin-bottom: 15px;
+    border: 1px solid rgb(233, 233, 233);
+    width: 79%;
+    border-radius: 7px;
+    margin-left: 11%;
+    font-size: 15px;
+}
+
+#register-car  .alert i {
+    font-size: 26px;
+    padding-right: 20px; 
+}
+
+#register-car  .closebtn {
+    margin-left: 15px;
+    color: white;
+    font-weight: bold;
+    float: right;
+    font-size: 22px;
+    line-height: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+#register-car  .closebtn:hover {
+    color: black;
+}
+
+/*---------->MAIN<----------*/
+main {
+    font-family: 'Lato', sans-serif;
+    overflow-x:hidden!important;
+}
+
+
+/*---------->REGISTER-CAR-DATA<----------*/
+
+#register-car-data {
+    margin-top: 70px;
+}
+
+#register-car-data .first-wrapper {
+    margin-bottom: 60px!important;
+}
+
+
+/*---------->CAR-DATA<----------*/
+
+#car-data .row {
+    margin-bottom: 30px;
+}
+
+#car-data .input-field .browser-default {
+     border: 1px solid  #9e9e9e;
+}
+
+#car-data .row .col.s3 {
+    width: 248px;
+}
+
+#car-data .row .col.s5 {
+    width: 423px;
+}
+
+
+/*---------->TYPE-DATA<----------*/
+
+#type-data .title {
+    margin-bottom: -10px;
+}
+
+#type-data .row {
+    display: flex;
+    display: -webkit-flex;
+    -moz-box-flex: horizontal;
+    -webkit-box-flex: horizontal;
+    -moz-box-orient: horizontal;
+    -webkit-box-orient: horizontal;
+}
+
+#type-data p {
+    border: 1px solid #e5e5e5;
+    width: 140px;
+    height: 110px;
+    background-color: #f5f5f5 ;
+    padding: 20px;
+    margin-right: 53px;
+}
+
+#type-data p:hover{
+    background-color: #eeeeee;
+}
+
+#type-data .row img {
+    padding: 9px;
+    height: 80px;
+    width: 80px;
+}
+
+#type-data input[type="radio"]:not(:checked) + label, 
+#type-data input[type="radio"]:checked + label {
+    position: absolute;
+    padding-left: 35px;
+    cursor: pointer;
+    display: inline-block;
+    width: 140px;
+    height: 110px;
+    line-height: 25px;
+    font-size: 1rem;
+    -webkit-transition: .28s ease;
+    transition: .28s ease;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    margin-top: -20px;
+    margin-left: -20px;
+}
+
+#car-data .overlay-update {
+    padding-top: 37px!important;
+    font-size: 16px!important;
+    color: #3e2121!important;
+    padding-left: 10px!important;
+}
+
+/*--->CHECKBOX-CONTAINER<---*/
+
+#checkbox-container .row {
+    margin-left: 14%;
+}
+
+#delivery-data .title {
+    width: 60%;
+    text-align: start;
+}
+
+/*----->PHOTO-DATA<-----*/
+
+#photo-data .btn {
+    height: 45px;
+    background-color: #3c79ce;
+}
+
+/*--->DESCRIPTION-DATA<--*/
+ 
+#description-data .explain {
+    margin-top: 40px;
+}
+
+/*--->DESCRIPTION/PHOTO<--*/
+#register-car .explain-img img {
+    margin-left: 15px;
+}
+
+#register-car .explain {
+    display: -webkit-box;
+    -moz-box-orient: horizontal;
+    -webkit-box-orient: horizontal;
+}
+
+#register-car .explain-text {
+    width: 71%;
+    margin-left: 20px; 
+    margin-top: -30px;
+}
+
+/*-----PRICE-DATA-----*/
+#price-data input {
+    width: 80%;
+}
+#price-data .price-car {
+    color: red!important;
+}
+
+
+/*----->DESCRIPTION-DATA<-----*/
+
+#description-data textarea {
+    width: 100%;
+    height: 8rem;
+    background-color: transparent;
+}
+
+/*----->BTN-SEARCH<-----*/
+
+#register-car .btn-search .btn {
+    margin-bottom: 30px;
+    background: #24559a;
+    border-radius: 3px;
+    margin-left: 30%;
+}
+
+
+/*----MODAL-CAR---*/
+#modal-car {
+    text-align: center;
+}
+
+
+#modal-car .icon-modal {
+    border: 4px solid rgba(209, 209, 209, 0.64);
+    border-radius: 100%;
+    width: 90px;
+    height: 90px;
+    margin-left: 40%;
+    margin-top: 21px;
+}
+
+#modal-car .modal {
+    width: 430px!important;
+    max-height: 250px!important;
+}
+
+#modal-car .success-icon i {
+    font-size: 80px;
+    color: #a6db8a;
+}
+
+#modal-car .error-icon span,
+#modal-car .question-icon span  {
+    font-size: 80px;
+    color: #ff4e4e;
+    line-height: 76px;
+    font-weight: 700;
+}
+
+#modal-car h4 {
+    font-size: 23px;
+}
+
+#modal-car .modal-footer {
+    margin-top: -36px;
+    margin-bottom: 20px;
+    margin-left: -33%;
+}
+
+#modal-car .modal-footer a {
+    margin-top: 12px;
+    background: #39c439;
+    color: white;
+    font-weight: 600;
+    width: 120px;
+}
+
+#modal-car .modalquestion {
+    margin-top: -36px;
+    margin-bottom: 20px;
+    margin-left: -15%;
+}
+
+#modal-car .modal-footer .yes-action a {
+    background: #36c583;
+}
+
+#modal-car .modal-footer .no-action a {
+    background: #ff6262;
+}
+
+#modal-car .modal-question {
+    margin-left: -86px;
+}
+
+#modal-car .modal-footer .yes-action a {
+    margin-left: 28px;
+}
+
+/*---RESPONSIVE---*/
+
+@media only screen and (max-width: 1270px) {
+    .line-register-car {
+        padding: 219px;
+        top: 143px;
+        left: 45%;
+        margin-left: -116px;
+    }
+}
+
+@media only screen and (max-width: 1176px) {
+    .breadcrumb {
+       margin-left: 12%;
+    }
+    .breadcrumb ul {
+        padding-left: 2%;
+         margin-left: 15%;
+    }
+    .line-register-car {
+       margin-left: -163px;
+       padding: 228px;
+    }
+}
+
+@media only screen and (max-width: 1020px) {
+    #register-car-data {
+        margin-left: 3%;
+    }
+    #car-data .row .col.s3 {
+        width: 33.3%;
+    }
+    #car-data .row .col.s5 {
+        width: 55%;
+    }
+    #type-data p {
+        margin-right: 7%;
+    }
+}
+
+@media only screen and (max-width: 995px) {
+    .breadcrumb ul {
+        margin-left: 15%;
+    }
+    .breadcrumb {
+        margin-left: 8%;
+        width: 87%;
+    }
+    #price-data input {
+        width: 100%;
+    }
+}
+
+@media only screen and (max-width: 880px) {
+    .line-register-car {
+        margin-left: -153px;
+        padding: 196px;
+    }
+    .breadcrumb ul {
+        margin-left: 12%;
+    }
+    .breadcrumb li {
+        padding: 10px 0px 10px 0px;
+    }
+    #register-car .explain-text {
+        width: 100%;
+    }
+    #car-data input {
+        width: 99%;
+    }
+    #car-data .row .col.s5 {
+        margin-right: 9%;
+    }
+    #type-data p {
+        margin-right: 3%;
+    }
+}
+
+@media only screen and (max-width: 750px) {
+    .line-register-car {
+        margin-left: -135px;
+        padding: 171px;
+        margin-top: -5px;
+    }
+    .breadcrumb img {
+        height: 30px;
+        width: 30px;
+    }
+    .breadcrumb .border-img {
+        width: 35px;
+        height: 34px;
+        margin-left: 34%;
+    }
+    .breadcrumb .bc-title span {
+        font-size: 12px;
+    }
+    #type-data p {
+        margin-right: 1.2%;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .line-register-car {
+        margin-left: -51px!important;
+        padding: 113px!important;
+        margin-top: 0px!important;
+    }
+}
+
+@media only screen and (max-width: 670px) {
+    .line-register-car {
+        margin-left: -63px;
+        padding: 118px;
+        margin-top: 5px;
+    }
+    .breadcrumb li {
+        padding-left: 10%;
+    }
+    .breadcrumb img {
+        height: 50px;
+        width: 50px;
+    }
+    .breadcrumb .border-img {
+        width: 55px;
+        height: 55px;
+        margin-left: 38%;
+    }
+    .breadcrumb li {
+        margin-right: 6%;
+    }   
+    .breadcrumb .bc-title span {
+        display: none;
+    } 
+    #type-data .radio-wrapping .row {
+        display: table-cell;
+        width: 10%;
+    }
+    #checkbox-container .row {
+        margin-left: 5%;
+        width: 120%;
+    }
+    #delivery-data .title {
+        text-align: left;
+    }
+    #photo-data .btn {
+        width: 55px;
+        height: 45px;
+    }
+    #photo-data .btn span {
+        font-size: 10px;
+        margin-left: -20px;
+    }
+}
+
+@media only screen and (max-width: 470px) {
+    #checkbox-container .row {
+        margin-left: 2%;
+    }
+    .breadcrumb ul {
+        margin-left: 0%;
+    }
+    #register-car  .btn-search .btn {
+        margin-left: 18%;
+    }
+    #car-data .row .col.s4,
+    #car-data .row .col.s3 {
+        width: 100%;
+    }
+    #car-data .row {
+        margin-bottom: 5px;
+    }
+    #car-data .row .col.s5 {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+    #car-data select {
+        margin-top: 30px;
+    }
+    #car-data .option-label {
+        margin-top: -10px;
+    }
+    #register-car-data .first-wrapper {
+        margin-bottom: 10px!important;
+    }
+     .line-register-car {
+        margin-left: -68px!important;
+        padding: 107px!important;
+        margin-top: 0px!important;
+    }
+ }
+
+@media only screen and (max-width: 400px) {
+    .breadcrumb li {
+        padding-left: 5%;
+    }
+    #photo-data .row {
+        width: 150%;
+    }
+    #description-data .container {
+        text-align: left;
+    }
+    #description-data {
+        padding-top: 40px;
+    }
+     #description-data .explain img {
+        margin-left: 70px;
+    }
+    #register-car .explain-text {
+        display: none;
+    }
+    #type-data .radio-wrapping .row p {
+        margin-left: -10px;
+        margin-right: 25px;
+        width: 130px;
+    }
+     .line-register-car {
+        margin-left: -60px!important;
+        padding: 81px!important;
+    }
+}

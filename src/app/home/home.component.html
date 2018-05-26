@@ -1,0 +1,287 @@
+
+<main id="home">  
+    <section id="home-header">
+        <div class="main-wrapper">
+            <div class="container center-text title-wrapp">
+                <div class="main-title">
+                    <span>Os melhores carros compartilhados</span>
+                </div>
+                <div class="secundary-title">
+                    <span>Você dirige e cuidaremos do resto</span>
+                </div>
+            </div>
+            
+            <div class="search-area">
+                <div class="row">
+                    <div class="input-field col s8">
+                        <input (keyup.enter)="goToSearch()" [(ngModel)]="search" placeholder="Onde você quer retirar o carro?" id="search-input" type="text" class="validate">
+                    </div>
+                    <button class="btn waves-effect waves-light col s2" (click)="goToSearch()">
+                        <i aria-hidden="true" class="fa fa-search left"></i>
+                        Buscar
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!--END-MAIN-WRAPPER-->
+    </section>
+    <!--END-HEADER-WRAPPER-->
+    
+    <section id="show-car">
+        <div class="slider">
+            <ul class="slides">
+            <li>
+                <img src="../assets/img/car-home/1.jpg" alt="img-car1">
+                <div class="caption">
+                <h5>Os melhores carros compartilhados</h5>
+                <h6 class="light grey-text text-lighten-3">Encontre o carro ideal para você</h6>
+                </div>
+            </li>
+            
+            <li>
+                <img src="../assets/img/car-home/2.jpg" alt="img-car2">
+                <div class="caption">
+                <h5>Melhor custo benefício</h5>
+                <h6 class="light grey-text text-lighten-3">Encontre os compactos com excelentes preços</h6>
+                </div>
+            </li>
+            <li>
+                <img src="../assets/img/car-home/3.jpg" alt="img-car3">
+                <div class="caption">
+                <h5>Segurança e confiabilidade</h5>
+                <h6 class="light grey-text text-lighten-3">Alugue um carro sem medo</h6>
+                </div>
+            </li>
+            <li>
+                <img src="../assets/img/car-home/4.jpg" alt="img-car4"> 
+                <div class="caption">
+                <h5>Melhor satisfação</h5>
+                <h6 class="light grey-text text-lighten-3">Os carros que você vai fazer questão de compartilhar</h6>
+                </div>
+            </li>
+            </ul>
+        </div>
+
+    <div class="car-list">
+    <span class="title-car">Bons negócios</span>
+
+        <ul  *ngFor="let current of mergeCarsUsers">
+            <li>
+                <div class="row" (click)="goToCarView(current.$key)"> 
+                    <div class="show-car-image" width="390" height="250">
+                        <img class="responsive-img" [src]="current.imgCar[0]" class="responsive-img" alt="car-image"> 
+                        <div class="show-price">
+                            <span>
+                                <span class="currency">R$</span> 
+                                <span class="value">{{current.preco}}</span>
+                                <span class="day-info">por dia</span>
+                            </span>
+                        </div>
+                    </div> 
+                    <div class="content-result">
+                        <div class="row">
+                            <div class="show-car-model col s12">
+                                <span>{{current.marca}} {{current.modelo}} <span class="years-style">{{current.ano}}</span></span>
+                            </div>
+                        </div>  
+                        <div class="row content col s12">
+                            <div class="col s2"> 
+                                <div class="show-profile-photo">
+                                    <img [src]= "current.imgUser" alt="profile-photo" />
+                                </div>
+                            </div>
+                            <div class="col s9 sharing-info">
+                                <div class="show-profile-name">
+                                    <span><img src="../assets/img/details-car/user.png" alt="icon-user"/>{{current.nome}} {{current.sobrenome}}</span>
+                                </div>
+                                <div class="show-location">
+                                    <span><img src="../assets/img/details-car/gps.png" alt="icom-location"/> {{current.bairro}} - {{current.cidade}}/{{current.estado}}</span>
+                                </div>
+                            </div>     
+                        </div>
+                    </div>
+                </div>
+            </li> 
+        </ul>
+        <div *ngIf="!mergeCarsUsers" class="progress">
+            <div class="indeterminate"></div>
+        </div>
+        
+    
+    </div> 
+    <!--end-car-list-->
+    <div class="btn-search-car">
+        <div class="row">
+            <button class="waves-effect waves-effect btn" (click)="goToSearch()">Encontre outros carros compartilhados</button>
+        </div>
+    </div>
+</section>
+<!--END-SEARCH-->
+
+
+    <section id="content-info">
+        <div class="container-wrapper">
+            <div class="center-text">
+                <h4>Como funciona o Lokkr?</h4>
+            </div>
+
+            <div class="horizontal-line"></div>
+
+            <div class="how-works">
+                <ul class="horizontal-list center-text">
+                    <li>
+                        <div class="col s3 narrow-col">
+                            <img src="../assets/img/home/1.png"/>
+                                <div class="subtitle-style">Escolha um carro</div>
+                                <p>
+                                Encontre um carro mais próximo e ideal para você 
+                                por um preço muito mais em conta, comparado
+                                às locadoras convencionais.
+                                </p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="col s3 narrow-col">
+                            <img src="../assets/img/home/2.png"/>
+                            <div class="subtitle-style">Agende o aluguel</div>
+                            <p>
+                                Combine facilmente o dia que deseja pegar a chave do carro e  
+                                o tempo que vai utilizá-lo, a partir do nosso
+                                sistema de agendamento.
+                            </p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="col s3 narrow-col">
+                            <img src="../assets/img/home/3.png"/>
+                            <div class="subtitle-style">Aproveite!</div>
+                            <p>
+                                Com o dinheiro que você economizou,
+                                sobra mais pra aproveitar com quem você mais gosta.
+                                Avalie o carro e tenha uma boa reputação.
+                            </p>
+                        </div>
+                    </li>
+                </ul>
+                <div class="btn-search-car">
+                    <div class="row">
+                        <button class="waves-effect waves-effect btn"  (click)="goToHowWorks()">Quero saber mais</button>
+                    </div>
+                </div>
+            </div>
+            <!--END-HOW-WORKS-->
+        </div>
+        <!--END-INFO-->
+    </section>
+    <!--END-CONTENT-INFO-->
+
+    <section id="motives-content" >
+        <div class="container-wrapper">
+            <div class="motives-info">
+                <div class="center-text">
+                    <h4>Proposta e benefícios</h4>
+                </div>
+                
+                <div class="horizontal-line"></div>
+
+                <div class="motives">
+                    <div class="arrow-top"><img class="responsive-img" src="../assets/img/home/arrow-1.png" alt=""></div>
+                    <ul class="horizontal-list center-text">
+                        <li>
+                            <div class="col s3 narrow-col">
+                                <p>
+                                    Você pode fazer um <span class="big-txt"> 
+                                    dinheiro extra </span> e de forma segura,
+                                    alugando seu carro enquanto não estiver 
+                                    utilizando.
+                                </p>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="col s3 narrow-col">
+                                <div class="arrow-lower"><img src="../assets/img/home/arrow-3.png" alt="arrow-icon"></div>
+                                <p>
+                                    Caso não tenha um carro, mas precisa 
+                                    de um temporariamente, você pode 
+                                    <span class="big-txt"> alugar um carro 
+                                    </span> de um compartilhador 
+                                    mais próximo de você.
+                                </p>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="col s3 narrow-col">
+                                <div class="arrow-lower"><img src="../assets/img/home/arrow-3.png" alt="arrow-icon"></div>
+                                <p>
+                                    Abrace o movimento de Car Sharing no Brasil, 
+                                    priorizamos a relação de <span class="big-txt"> 
+                                    troca e ganho </span> para todos.
+                                </p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="arrow-bottom"><img class="responsive-img" src="../assets/img/home/arrow-2.png" alt=""></div>
+            </div>
+        
+        </div>
+        <!--END-MOTIVES-INFO-->
+    </section>
+    <!---END-MOTIVES-CONTENT-->
+    
+    <section id="advertising">
+        <div class="parallax-container">
+            <div class="parallax"><img src="../assets/img/home/car-footer.jpg"></div>
+            <div class="txt-container-style">
+                <div class="text-adv">
+                    <h5>Seja um Lokkr também</h5>
+                    <p>
+                        Lokkr é um sistema online de comparilhmento de carros, simples e prático.
+                            Aqui é o lugar ideal para você garantir uma renda extra no fim do mês,
+                        compartilhando seu carro de forma simples e segura, ou pra você
+                        que deseja alugar um carro legal com um valor bastante em conta.
+                    </p>
+                </div>
+                <button class="btn waves-effect waves-light col s2" (click)="goToLogin()">
+                    Quero fazer parte
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact"> 
+        <div class="container center-text">
+            <h4>Contate-nos</h4>
+            <div class="horizontal-line"></div>
+            <div class="contact-form">
+                <div class="text-contact center-text">
+                    <p>
+                        Tem alguma dúvida ou deseja saber mais de algo?  
+                    </p>
+                    <p>
+                        Contate-nos, adorariamos te responder.
+                    </p>
+                </div>
+                <div class="row">
+                    <div class="email-side col s6">
+                        <span class="icon"><i class="fa fa-envelope-o" aria-hidden="true"></i></span>
+                        <h5>E-mail</h5>
+                        <p>
+                            Envie uma mensagem para: 
+                            <a href="mailto:info@gustavomelo.contato@gmail.com">
+                                gustavomelo.contato@gmail.com
+                            </a>
+                        </p>
+                    </div>
+                    <div class="social-side col s6">
+                        <span class="icon fb-color"><i class="fa fa-facebook" aria-hidden="true"></i></span>
+                        <h5>Midia Social</h5>
+                        <p>
+                            Contate-nos por uma de nossas redes sociais, <a href="https://www.facebook.com/gustavosylva" target="_blank">Facebook</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>

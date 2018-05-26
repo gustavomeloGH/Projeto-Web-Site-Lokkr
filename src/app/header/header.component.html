@@ -1,0 +1,56 @@
+<header id="header-hd"> 
+  <nav>
+    <div class="nav-wrapper">
+        <a href="javascript:void(0)" (click)="goToHome()" class="brand-logo">
+            <img class="logo" src="../assets/img/logo/Logo_Lokkr-w.fw.png" />
+        </a>
+        <a href="#" data-activates="mobile-demo" class="button-collapse"> <img src="../assets/img/header/bar-menu.png" /> </a>
+        <ul class="right hide-on-med-and-down">
+            <li><a href="javascript:void(0);" (click)="goToHowWorks()"><span>Como funciona<img src="../assets/img/header/question-mark.png" height="15px" width="15px"/>  </span></a></li>
+            <li><a href="javascript:void(0);" (click)="goToRegister()"><span>Compartilhe também <img src="../assets/img/header/money.png" height="20px" width="20px"/> </span></a></li>
+            <li><div class="divider-bar"></div></li>
+            <div *ngIf="haveLogin == null" class="wait">
+                <div class="progress">
+                    <div class="indeterminate"></div>
+                </div>
+            </div>
+            <li *ngIf="haveLogin == false"><span class="enter-style" (click)="goToLogin()">Entre</span></li>
+            <li *ngIf="haveLogin == true">
+                <div class="login-menu">
+                    <div class="btn-menu">
+                        <a class='dropdown-button' href="javascript:void(0);" 
+                        data-activates='dropdown1'>
+                            <img class="img-profile" src="{{user.fotoPerfil}}" alt="progile-photo">
+                            <i class="fa fa-angle-down" aria-hidden="true"></i>
+                        </a>
+                    </div>
+                    <div class="menu-opened">   
+                        <ul id='dropdown1' class='dropdown-content'>
+                            <li><span class="user-name">
+                                <span class="login-msg">Você está conectado(a)</span> <br>
+                                <span class="name-style">{{user.nome}}</span></span></li>
+                           <li class="divider"></li>
+                            <li><a (click)="goToDashboard()" href="javascript:void(0);">
+                                <i class="material-icons">dashboard</i>Meu dashboard</a>
+                            </li>
+                            <li><a (click)="logOff()" href="javascript:void(0);">
+                                <i class="fa fa-sign-out"  aria-hidden="true"></i>Sair</a>
+                            </li>
+                         </ul>
+                    </div>
+                   
+                </div>
+                
+            </li>
+        </ul>  
+        <ul class="side-nav" id="mobile-demo">
+            <li><img class="logo" src="../assets/img/logo/Logo_Lokkr-w.fw.png"/></li>
+             <li><a href="javascript:void(0);" (click)="goToHowWorks()">Como funciona?</a></li>
+            <li><a href="javascript:void(0);" (click)="goToRegister()">Compartilhe também</a></li>
+            <li><a href="javascript:void(0);" (click)="goToLogin()"><span class="enter-mobile">Entre</span></a></li>
+        </ul>
+    </div>
+    <!--END-NAV-WRAPPER-->
+  </nav>
+  <!--END-NAVBAR-->
+</header>

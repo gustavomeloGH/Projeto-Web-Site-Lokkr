@@ -1,0 +1,393 @@
+<header>
+     <div class="breadcrumb">
+       <div class="line-register-car"></div>
+         <ul>
+             <li>
+               <div class="border-img">
+                  <img src="../assets/img/breadcrumb-icon/1db.png" alt="icon-register">
+               </div>
+                <div class="bc-title"> 
+                    <span><span class="number-title">1.</span> Cadastre-se</span>
+                </div>
+             </li> 
+             <li>
+                <div class="border-img">
+                  <img class="current-img" src="../assets/img/breadcrumb-icon/2db.png" alt="icon-register-car">
+                </div>
+                 <div class="bc-title"> 
+                      <span class="current"> 
+                         <span class="number-title">2.</span> Cadastre seu veículo</span>
+                </div>
+             </li>
+             <li>
+                 <div class="border-img">
+                    <img src="../assets/img/breadcrumb-icon/3db.png" alt="icon-share">
+                 </div>
+                 <div class="bc-title"> 
+                     <span><span class="number-title">3.</span> Compartilhe </span>
+                </div>
+             </li>
+         </ul>
+     </div>
+</header>
+
+<main id="register-car">
+  <div *ngIf="errorMessage" class="alert animated fadeIn">
+      <i class="fa fa-exclamation" aria-hidden="true"></i>
+      {{errorMessage}}
+  </div>
+
+  <section id="register-car-data">
+      <section id="car-data">
+        <div class="container">
+         
+          <div class="row">
+            <div class="title"><span>Dados do carro</span></div>
+            <div class="row first-wrapper">
+              <div class="input-field col s5">
+                  <input id="chassi" required="true" [(ngModel)]="car.chassi" mask="0AA000AA00A000000" type="text" class="validate" placeholder="Digite aqui o chassi"/>
+                  <label class="active" for="chassi">Chassi<span class="required-stile"> *</span></label>
+              </div>
+              <div class="input-field col s4">
+                    <input id="placa" [(ngModel)]="car.placa" mask="AAA-000" type="text" class="validate" placeholder="XXX-0000"/>
+                    <label class="active" for="placa">Placa<span class="required-stile"> *</span></label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field  col s3">
+                    <label class="option-label"> Cor do carro <span class="required-stile"> *</span></label>
+                    <select class="browser-default" [(ngModel)]="car.cor">
+                         <option *ngFor="let c of listCor" value="{{c.nome}}">{{ c.nome }}</option>
+                    </select>
+                </div>
+                <div class="input-field col s3">
+                    <label class="option-label"> Marca do carro <span class="required-stile"> *</span></label>
+                    <label *ngIf="showLabel" class="option-label overlay-update"> {{car.marca}} </label>
+                    <select (click)="hiddeOverlayUpdate()" class="browser-default" id="select-marca" [(ngModel)]="car.marca" (ngModelChange)="getModelos(car.marca)">
+                        <option *ngFor="let marca of listaMarcas" value="{{marca.codigo}}"> {{marca.nome}} </option> 
+                    </select>
+                </div>
+                <div class="input-field col s3">
+                    <label class="option-label"> Modelo do carro <span class="required-stile"> *</span></label>
+                    <label *ngIf="showLabel" class="option-label overlay-update"> {{car.modelo}} </label>
+                    <select (click)="hiddeOverlayUpdate()" class="browser-default" id="select-modelo" [(ngModel)]="car.modelo"  (ngModelChange)="getAnos(car.modelo)">
+                      <option *ngFor="let modelo of listaModelos" value="{{modelo.codigo}}"> {{modelo.nome}} </option>
+                    </select>
+                </div>
+            </div> 
+            <div class="row">
+                <div class="input-field col s3">
+                    <label class="option-label"> Ano do modelo <span class="required-stile"> *</span></label>
+                    <label *ngIf="showLabel" class="option-label overlay-update"> {{car.ano}} </label>
+                    <select (click)="hiddeOverlayUpdate()" class="browser-default" id="select-ano" [(ngModel)]="car.ano">
+                      <option *ngFor="let ano of listaAnos" value="{{ano.nome}}"> {{ano.nome}} </option>
+                    </select>
+                </div>
+                <div class="input-field col s3">
+                      <label class="option-label"> Quilometragem <span class="required-stile"> *</span> </label>
+                      <select class="browser-default" [(ngModel)]="car.quilometragem">
+                         <option *ngFor="let q of listQuilometragem" value="{{q.quilometragem}}">{{ q.quilometragem }}</option>
+                     </select>
+                  </div>
+                  <div class="input-field col s3">
+                     <label class="option-label">Combustível <span class="required-stile"> *</span></label>
+                      <select class="browser-default" [(ngModel)]="car.combustivel">
+                         <option *ngFor="let com of listCombustivel" value="{{com.tipo}}">{{ com.tipo }}</option>
+                     </select>
+                  </div>
+                </div>
+          </div>
+        </div>
+        <!--end-container-->
+    </section>
+    <!--end-car-data-->
+
+    <section id="type-data">  
+      <div class="container">
+        <div class="row"><div class="title"><span>Tipo de carro<span class="required-stile"> *</span></span></div></div>
+        <div class="radio-wrapping">
+          <div class="row">
+                <p>
+                    <input name="type-group" type="radio" id="Buggy" (click)="getValueCarType('Buggy')"/>
+                    <label class="active" for="Buggy">Buggy</label>
+                    <img src="../assets/img/icon-car-type/001-buggy.png" alt="buggy-icon">
+                </p>
+                <p>
+                    <input name="type-group" type="radio" id="Conversivel" (click)="getValueCarType('Conversivel')"/>
+                    <label class="active" for="Conversivel">Conversível</label>
+                    <img src="../assets/img/icon-car-type/002-conversivel.png" alt="conversivel-icon">
+                </p>
+                <p>
+                    <input name="type-group" type="radio" id="Hatch" (click)="getValueCarType('Hatch')"/>
+                    <label class="active" for="Hatch">Hatch</label>
+                    <img src="../assets/img/icon-car-type/003-hatch.png" alt="hatch-icon">
+                </p>
+                <p>
+                    <input name="type-group" type="radio" id="Minivan" (click)="getValueCarType('Minivan')"/>
+                    <label class="active" for="Minivan">Minivan</label>
+                    <img src="../assets/img/icon-car-type/004-minivan.png" alt="minivan-icon">
+                </p>
+          </div>
+          <div class="row">
+                <p>
+                    <input name="type-group"  type="radio" id="Picape" (click)="getValueCarType('Picape')"/>
+                    <label class="active" for="Picape">Picape</label>
+                    <img src="../assets/img/icon-car-type/005-picape.png" alt="picape-icon">
+                </p>
+                <p>
+                    <input name="type-group" type="radio" id="Seda" (click)="getValueCarType('Seda')"/>
+                    <label class="active" for="Seda">Sedã</label>
+                    <img src="../assets/img/icon-car-type/006-seda.png" alt="seda-icon">
+                </p>
+                <p>
+                    <input name="type-group" type="radio" id="Esportivo" (click)="getValueCarType('Esportivo')"/>
+                    <label class="active" for="Esportivo">Esportivo</label>
+                    <img src="../assets/img/icon-car-type/007-esportivo.png" alt="esportivo-icon">
+                </p>
+                <p>
+                    <input name="type-group"  type="radio" id="Van" (click)="getValueCarType('Van')"/>
+                    <label class="active" for="Van">Van</label>
+                    <img src="../assets/img/icon-car-type/008-van.png" alt="van-icon">
+                </p>
+          </div>
+        </div>
+      </div>
+      <!--end-container-->
+    </section>
+    <!--end-type-data-->
+
+
+    <section id="checkbox-container">
+        <div class="row">
+        
+          <section id="details-data">
+            <div class="container col s5">
+                <div class="title"><span>Detalhes<span class="required-stile"> *</span></span></div>
+                <p>
+                  <input type="checkbox" id="Airbag" (click)="getDetailsCar('Airbag')"/>
+                  <label class="active" for="Airbag">Air Bag</label>
+                </p>
+                <p>
+                  <input type="checkbox" id="Abs" (click)="getDetailsCar('Abs')"/>
+                  <label class="active" for="Abs">Freio ABS</label>
+                </p>
+                <p>
+                  <input type="checkbox" id="Direcao Hidraulica" (click)="getDetailsCar('Direcao Hidraulica')"/>
+                  <label class="active" for="Direcao Hidraulica">Direção Hidráulica ou Elétrica</label>
+                </p>
+                <p>
+                  <input type="checkbox" id="Cambio Automatico" (click)="getDetailsCar('Cambio Automatico')"/>
+                  <label class="active" for="Cambio Automatico">Cambio Automático</label>
+                </p>
+                <p>
+                  <input type="checkbox" id="Blindado" (click)="getDetailsCar('Blindado')"/>
+                  <label class="active" for="Blindado">Blindado</label>
+                </p>
+                <p>
+                  <input type="checkbox" id="4x4" (click)="getDetailsCar('4x4')"/>
+                  <label class="active" for="4x4">4X4</label>
+                </p>
+                <p>
+                  <input type="checkbox" id="Ar-Condicionado" (click)="getDetailsCar('Ar-Condicionado')"/>
+                  <label class="active" for="Ar-Condicionado">Ar Condicionado</label>
+                </p>
+                <p>
+                  <input type="checkbox" id="Usb" (click)="getDetailsCar('Usb')"/>
+                  <label class="active" for="Usb">USB</label>
+                </p>
+                <p>
+                  <input type="checkbox" id="Gps" (click)="getDetailsCar('Gps')"/>
+                  <label class="active" for="Gps">GPS</label>
+                </p>
+            </div>
+            <!--end-container-->
+          </section>
+          <!--end-details-data-->
+
+
+          <section id="permission-data">
+            <div class="container col s4">
+                <div class="title"><span>Permissões</span></div>
+                <p>
+                  <input type="checkbox" id="Fumar" (click)="getPermissionCar('Fumar')"/>
+                  <label class="active" for="Fumar">Fumar</label>
+                </p>
+                <p>
+                  <input type="checkbox" id="Animais" (click)="getPermissionCar('Animais')"/>
+                  <label class="active" for="Animais">Animais de estimação</label>
+                </p>
+                <p>
+                  <input type="checkbox" id="Viagens" (click)="getPermissionCar('Viagens')"/>
+                  <label class="active" for="Viagens">Viagens</label>
+                </p>
+            </div>
+            <!--end-container-->
+          </section>
+          <!--end-permission-data-->
+
+          <section id="delivery-data">
+            <div class="container col s4">
+                <div class="title"><span class="complete-span">Desejo levar carro até o locatário?<span class="required-stile"> *</span></span></div>
+                <p>
+                  <input name="delivery-group" type="radio" id="sim-delivery"
+                  (click)="getDeliveryBoolean('true')" />
+                  <label class="active" for="sim-delivery">Sim</label>
+                </p>
+                <p>
+                  <input name="delivery-group" type="radio" id="nao-delivery" 
+                  (click)="getDeliveryBoolean('false')"/>
+                  <label class="active" for="nao-delivery">Não</label>
+                </p>
+            </div>
+          <!--end-container-->
+        </section>
+        <!--end-delivery-data-->
+
+      </div>
+    </section>
+    <!--end-checkbox-container-->
+
+
+    <section id="photo-data">
+        <div class="container">
+          <div class="title"><span>Fotos do carro <span class="required-stile"> *</span></span></div>
+          <div class="row">
+            <div class="file-field input-field col s5">
+                <div class="btn">
+                  <span>Upload</span>
+                  <input type="file" (change)="fileChangeEvent($event)" id="fotoPerfil" multiple>
+                </div>
+                <div class="file-path-wrapper">
+                    <input class="file-path validate" type="text" placeholder="Uma ou mais fotos">
+                </div>
+            </div>
+            <div class="explain col s4">
+              <div class="explain-img">
+                <img src="../assets/img/icon-explain-car/002-photo.png" alt="photo-icon">
+              </div>
+              <div class="explain-text">
+                <div class="title"><span>Capriche na foto!</span></div>
+                <div><span>
+                      Veja um melhor ângulo e tire boas fotos. 
+                      Lembre-se, as fotos são excelentes atrativos
+                      na hora da escolha de um aluguel.
+                    </span>
+                </div>
+              </div>
+          </div>
+          </div>
+        </div>
+        <!--end-container-->
+      </section>
+      <!--end-photo-data-->
+
+
+      <section id="description-data">
+        <div class="container">
+            <div class="row">
+                <div class="input-field col s5">
+                    <textarea id="description-data"[(ngModel)]="car.descricao"  placeholder="Detalhe o seu carro aqui" data-length="200"></textarea>
+                    <label class="active" for="description-data" class="title active"><span>Descrição do carro<span class="required-stile"> *</span></span></label>
+                </div>
+                <div class="explain col s4">
+                    <div class="explain-img">
+                        <img src="../assets/img/icon-explain-car/001-pen.png" alt="photo-icon">
+                    </div>
+                    <div class="explain-text">
+                      <div class="title"><span>Descreva bem seu carro!</span></div>
+                      <div><span>
+                            Digite pontos importantes.
+                            Uma boa descrição
+                            facilita e muito quem deseja encontrar seu carro.
+                          </span>
+                      </div>
+                    </div>
+                </div>
+          </div>
+        </div>
+        <!--end-container-->
+      </section>
+      <!--end-description-data-->
+
+
+      <section id="price-data">
+        <div class="container">
+          <div class="row">
+              <div class="title"><span>Preço do aluguel: <small>(por dia)</small><span class="required-stile"> *</span>
+                </span> <span class="price-car"> R${{ car.preco }}</span> </div>
+              <p class="range-field">
+                <input [(ngModel)]="car.preco" type="range" id="price-car" min="0" max="550" />
+              </p>
+          </div>
+        </div>
+        <!--end-container-->
+      </section>
+      <!--end-description-data-->
+
+      <div class="container btn-search">
+        <div *ngIf="checkData" class="wait">
+            <span>Aguarde...</span>
+            <div class="progress">
+                <div class="indeterminate"></div>
+            </div>
+        </div>
+        <button  *ngIf="!checkData"  (click)="registerCar()" class="btn waves-effect waves-light" type="submit" name="action">
+            <span> Salve e continue </span>
+            <i class="fa fa-long-arrow-right right" aria-hidden="true"></i>
+        </button>
+      </div>
+
+  </section>
+  <!--end-form-data-->
+
+   <section id="modal-car"> 
+        <div id="modalCar2" class="modal">
+             <div class="icon-modal success-icon">
+                <i class="material-icons">done</i>
+            </div>
+            <div class="modal-content">
+                <h4>{{modalMsg}}</h4>
+            </div>
+            <div class="modal-footer">
+                <a (click)="goToUrl()" href="javascript:void(0);" 
+                class="modal-action modal-close waves-effect waves-green btn-flat">Ok</a>
+            </div>
+        </div>
+    </section>
+
+     <section (click)="goToHome()" id="modal-car"> 
+        <div id="modalCar3"  class="modal">
+             <div class="icon-modal error-icon">
+               <span>!</span>
+            </div>
+            <div class="modal-content" >
+                <h4><small>{{modalMsg}}</small></h4>
+            </div>
+            <div class="modal-footer">
+                <a href="javascript:void(0);" class="modal-action modal-close waves-effect waves-green btn-flat">Ok</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="modal-car" > 
+        <div id="modalCar4" class="modal">
+             <div class="icon-modal question-icon">
+               <span>?</span>
+            </div>
+            <div class="modal-content">
+                <h4>{{modalMsg}}</h4>
+            </div>
+            <div class="modal-footer modal-question">
+                <div class="yes-action">
+                    <a href="javascript:void(0);" 
+                    class="modal-action modal-close waves-effect waves-red btn-flat">Sim</a>
+                </div>
+                <div class="no-action">
+                    <a (click)="goToShare()" href="javascript:void(0);" 
+                    class="modal-action modal-close waves-effect waves-red btn-flat">Não</a>
+                </div>
+            </div>
+        </div>
+    </section>
+  
+ </main>

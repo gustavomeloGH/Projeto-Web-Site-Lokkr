@@ -1,0 +1,354 @@
+<div *ngIf="!carView" class="progress progress-car">
+        <div class="indeterminate"></div>
+</div>
+<main id="car-view"  *ngIf="carView">
+  <section id="header-photo">
+       <div class="parallax-container">
+            <div class="parallax"><img [src]="carView.fotosCarro[0]" ></div>
+        </div>
+  </section>
+  <!--header-photo-->
+  <section id="main-car-detail">
+      <div class="row">
+        <div class="container">
+            <article id="profile-data" class="col s8">
+             
+              <div class="row">
+
+                <div class="profile-photo col s3">
+                    <img [src]="carView.profileFoto" alt="profile-photo">
+                    <span>{{carView.nome}} {{carView.sobrenome}}</span>
+                </div>
+                <div class="car-info col s8">
+                    <div class="row">
+                      <div class="car-title col s12">
+                          <span>{{carView.marca}} {{carView.modelo}} <small>{{carView.ano}}</small> </span>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="location-info col s12">
+                          <div class="icon-location">
+                            <img src="../../assets/img/details-car/gps.png" alt="gps-icon">
+                            <span>{{carView.bairro}} - {{carView.cidade}}</span>
+                          </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="adds-car col s12">
+                          <div class="title-text">
+                            <span><small>Permissões</small></span>
+                         </div>
+                          <ul>
+                            <li>
+                              <div class="img-adds" [ngClass]="carView.delivery === 'true' ? 'ok' : 'notOk'">
+                                <img src="../../assets/img/details-car/4x4.png" alt="">
+                              </div>
+                                <div class="text-adds">
+                                  <span>Delivery <br> <small>(levar carro)</small></span>
+                                </div>
+                                
+                            </li>
+                            <li>
+                              <div class="img-adds" [ngClass]="className('Animais', carView.permissoes)">
+                                <img src="../../assets/img/details-car/footprint.png" alt="">
+                              </div>
+                                <div class="text-adds">
+                                  <span>Animais <br><small> (estimação)</small></span>
+                                </div>
+                            </li>
+                            <li>
+                              <div class="img-adds" [ngClass]="className('Fumar', carView.permissoes)">
+                                <img src="../../assets/img/details-car/smoking.png" alt="">
+                              </div>
+                                <div class="text-adds">
+                                  <span>Fumar</span>
+                                </div>
+                            </li>
+                            <li>
+                               <div class="img-adds" [ngClass]="className('Viagens', carView.permissoes)">
+                                <img src="../../assets/img/details-car/distance.png" alt="">
+                              </div>
+                                <div class="text-adds">
+                                  <span>Viagens</span>
+                                </div>
+                            </li>
+                          </ul>
+                      </div>
+                    </div>
+                </div>
+
+              </div>
+              <!--end-row-->
+
+              <div class="row">
+
+                <div class="car-description col s10">
+                  <div class="text-description">
+                    <div class="row">
+                      <div class="title-text">
+                         <span>Sobre o carro</span>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <p>
+                          {{carView.descricao}}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!--end-row-->
+            
+
+              <div class="row">
+
+                <article id="car-detail">
+                    <div class="title-text">
+                      <span>Caracteristicas do carro</span>
+                    </div>
+                    <div class="details-list">
+                      <ul>
+                        <li>
+                            <div class="img-detail style-ok-detail" [ngClass]="className('Airbag', carView.detalhes)">
+                                <img src="../../assets/img/details-car/airbag.png" alt="airbag_icon">
+                            </div>
+                            <div class="text-detail">
+                                <span>Airbag</span>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="img-detail style-ok-detail" [ngClass]="className('Abs', carView.detalhes)">
+                              <img src="../../assets/img/details-car/abs.png" alt="abs_icon">
+                            </div>
+                            <div class="text-detail">
+                                <span>Abs</span>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="img-detail style-ok-detail" [ngClass]="className('Direcao Hidraulica',carView.detalhes)">
+                               <img src="../../assets/img/details-car/hidro.png" alt="direcao_hidro_icon">
+                            </div>
+                            <div class="text-detail">
+                                <span>Direção Hidro-elétrica</span>
+                            </div>
+                        </li>
+                         <li>
+                            <div class="img-detail style-ok-detail" [ngClass]="className('Cambio Automatico', carView.detalhes)">
+                              <img src="../../assets/img/details-car/gearbox.png" alt="cambio_icon">
+                            </div>
+                            <div class="text-detail">
+                                <span>Cambio Automático</span>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="img-detail style-ok-detail" [ngClass]="className('Blindado', carView.detalhes)">
+                                <img src="../../assets/img/details-car/armored.png" alt="blindado_icon">
+                            </div>
+                            <div class="text-detail">
+                                <span>Blindado</span>
+                            </div>
+                        </li>
+                      
+                         <li>
+                            <div class="img-detail style-ok-detail" [ngClass]="className('4x4', carView.detalhes)">
+                               <img src="../../assets/img/details-car/4x4.png" alt="4x4_icon">
+                            </div>
+                            <div class="text-detail">
+                                <span>4x4</span>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="img-detail style-ok-detail" [ngClass]="className('Ar-Condicionado', carView.detalhes)">
+                                <img src="../../assets/img/details-car/snow.png" alt="ar_condicionado_icon">
+                            </div>
+                            <div class="text-detail">
+                                <span>Ar-condicionado</span>
+                            </div>
+                        </li>
+                        <li>  
+                            <div class="img-detail style-ok-detail" [ngClass]="className('Usb', carView.detalhes)">
+                               <img src="../../assets/img/details-car/usb.png" alt="usb_icon">
+                            </div>
+                            <div class="text-detail">
+                               <span>Usb</span>
+                            </div>
+                        </li>
+                        <li>  
+                            <div class="img-detail style-ok-detail" [ngClass]="className('Gps', carView.detalhes)">
+                               <img src="../../assets/img/details-car/gps.png" alt="gps_icon">
+                            </div>
+                            <div class="text-detail">
+                               <span>Gps</span>
+                            </div>
+                        </li>
+                      </ul>
+                    </div>
+                     <div class="row">
+                        <div class="legend-text">
+                            <span>Legenda:</span>
+                             <div class="row">
+                                   <i class="material-icons check-icon">check</i> : O carro possui esta atribuição.
+                                   <i class="material-icons block-icon">block</i> : O carro não possui essa atribuição.
+                                </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="evaluation col s10">
+                            <div class="text-description">
+                                <div class="row">
+                                    <div class="title-text">
+                                        <span>Avaliações:</span>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <p *ngIf="carView.avaliacao === 0">
+                                        <span>Esse carro ainda não possui avaliações! Quem sabe você não pode ser o primeiro?</span>
+                                    </p>
+                                    <div *ngIf="carView.avaliacao !== 0">
+                                        <div class="star-evaluation">
+                                            <div class="star-evaluation">
+                                                <ul>
+                                                    <li *ngFor="let stars of checkAvg()">
+                                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                     </div>
+                                 </div>
+                             </div>
+                         </div>
+                    </div>
+                    <!--end-row-->
+
+                   
+                </article>
+                <!--end-car-detail-->
+
+                
+                
+              </div>
+              <!--end-row-->
+              
+              <article id="other-photo">
+                  <div class="title-text">
+                    <span>Outras fotos</span>
+                  </div>
+                  <div *ngFor="let carFoto of carView.fotosCarro" class="photo-cars">
+                      <img class="materialboxed" width="250" src={{carFoto}}>
+                  </div>
+              </article>
+          </article>
+          <!--end-profile-data-->
+
+          <div class="separator"></div>
+          
+          <article *ngIf="!alreadyRequestCarLogin" id="date-share" class="col s4">
+                <div class="row col s12">
+                    <div class="price-car">
+                        <span>Preço do aluguel: <span class="price-style"> 
+                         R$ {{carView.preco}}  <small><small>/ por dia</small></small></span>
+                        </span>
+                    </div>
+                </div>
+                <div *ngIf="notIsMyCar" class="row">
+                  <div class="share-wrapper">
+                      <div class="text-explain">
+                          <span>Selecione a data e hora que desejada para o aluguel do carro.</span>
+                      </div>
+                      <div class="row">
+                          <div class="input-field col s8 date-field">
+                              <i class="material-icons prefix">schedule</i>
+                               <input [(ngModel)]="initialDate" readonly="true" ngui-datetime-picker date-only="true" />
+                               <label class="active">De</label>
+                          </div>
+                          <div class="input-field col s4">
+                           <input [(ngModel)]="initialHour"  maxlength="5" mask="00:00" type="text" placeholder="--:--"> 
+                          </div>
+                      </div> 
+                      <div class="row">
+                          <div class="input-field col s8  date-field">
+                              <i class="material-icons prefix">schedule</i> 
+                              <input [(ngModel)]="finalDate" ngui-datetime-picker date-only="true" />
+                               <label class="active">Até</label>
+                          </div>
+                          <div class="input-field col s4">
+                            <input [(ngModel)]="finalHour" maxlength="5" mask="00:00" type="text" placeholder="--:--">
+                          </div>
+                      </div>
+                      <div class="date-btn">
+                          <button (click)="makeLease()" class="btn waves-effect waves-light" type="submit" name="action">
+                            Solicitar carro
+                            <i class="fa fa-paper-plane" aria-hidden="true"></i>
+                          </button>
+                    </div>    
+                  </div>
+                </div>
+            </article>
+            <!--end-date-share-->
+            
+            <article *ngIf="alreadyRequestCarLogin" id="msg-box" class="col s4">
+                 <div class="row col s12">
+                    <div *ngIf="awaitAccept" class="msg-container">
+                        <div class="title-solicitation">
+                            <i class="material-icons">error_outline</i>
+                            <span>Aguardando a confirmação!</span>
+                        </div>
+                        <div class="text-solicitation">
+                            <span>
+                                Você fez a solicitação do aluguel deste carro. 
+                                Acompanhe acessando seu dashboard.
+                            </span>
+                        </div>
+                        <div class="alert-solicitation">
+                            Não se preocupe, logo logo sua solicitação será 
+                            respondida!                         
+                        </div>
+                    </div>
+                    <div *ngIf="!awaitAccept" class="msg-container">
+                        <div class="title-solicitation">
+                            <i class="material-icons">error_outline</i>
+                            <span>Solicitação aceita!</span>
+                        </div>
+                        <div class="text-solicitation">
+                            <span>
+                                Aguarde até o dia agendado, vá ao lugar 
+                                combinado e pegue as chaves! 
+                            </span>
+                        </div>
+                        <div class="alert-solicitation">
+                            Este carro ficará novamente 
+                            disponível para seu aluguel, 
+                            assim que for entregue! Aproveite e lembre-se 
+                            de avaliar após a entrega.                        
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+          </div>
+          <!--end-container-->
+      </div>
+      <!--end-row-->
+      
+  </section>
+  <!--end-main-car-detail-->
+
+  	<section id="modal-car-view"> 
+		<div id="modalCarView" class="modal">
+			<div class="icon-modal">
+				<i *ngIf="modalMsg.includes('sucesso')" class="material-icons success-icon">done</i>
+                <span *ngIf="!modalMsg.includes('sucesso')" class="error-icon">!</span>
+			</div>
+			<div class="modal-content">
+				<h4>{{modalMsg}}</h4>
+			</div>
+			<div class="modal-footer">
+				<a href="javascript:void(0);" 
+				class="modal-action modal-close waves-effect btn-flat"
+                [ngClass]="modalMsg.includes('sucesso') ? 'green' : 'red'" >Ok</a>
+			</div>
+		</div>
+	</section>
+</main> 

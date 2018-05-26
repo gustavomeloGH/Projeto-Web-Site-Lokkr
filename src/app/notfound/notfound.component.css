@@ -1,0 +1,22 @@
+#not-found .notOk {
+    text-align: center;
+    font-size: 42px;
+    color: #d5d5d5;
+    padding-bottom: 253px;
+}
+
+#not-found h1 {    
+    font-size: 90px;
+    color: #9eccee;
+}
+
+#not-found h4 {
+    margin-top: -38px;
+}
+
+#not-found {
+    padding-bottom: 500px;
+    background-size: 668px 664px !important;
+    background-position: 50%!important;
+    background: url('../../assets/img/404/bck-carro-404.png') no-repeat;
+}

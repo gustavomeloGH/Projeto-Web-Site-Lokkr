@@ -1,0 +1,7 @@
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css"/>
+
+
+<app-header *ngIf="isShowBasic()"></app-header>
+<router-outlet (deactivate)="onDeactivate()" ></router-outlet>
+<app-footer *ngIf="isShowBasic() && !isNotDashboard()"></app-footer>

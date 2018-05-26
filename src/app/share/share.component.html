@@ -1,0 +1,89 @@
+<header>
+     <div class="breadcrumb">
+       <div class="line-share"></div>
+         <ul>
+             <li>
+               <div class="border-img">
+                  <img src="../assets/img/breadcrumb-icon/1db.png" alt="icon-register">
+               </div>
+                <div class="bc-title"> 
+                    <span><span class="number-title">1.</span> Cadastre-se</span>
+                </div>
+             </li> 
+             <li>
+                <div class="border-img">
+                  <img src="../assets/img/breadcrumb-icon/2db.png" alt="icon-register-car">
+                </div>
+                 <div class="bc-title"> 
+                      <span> 
+                         <span class="number-title">2.</span> Cadastre seu veículo</span>
+                </div>
+             </li>
+             <li>
+                 <div class="border-img">
+                    <img class="current-img" src="../assets/img/breadcrumb-icon/3db.png" alt="icon-share">
+                 </div>
+                 <div class="bc-title"> 
+                     <span class="current"><span class="number-title">3.</span> Compartilhe </span>
+                </div>
+             </li>
+         </ul>
+     </div>
+</header>
+<main id="share">
+
+  <section id="share-explain">
+    <div class="container">
+      <article id="main-content"> 
+          <div class="row">
+            <div class="left-side col s6">
+                <div class="know-more">
+                  <span class="title-text">Saiba mais sobre a LOKKR</span>
+                </div>
+                <div class="maps-site">
+                   <ul class="links">
+                    <li>
+                        <a href="javascript:void(0);" (click)="goToHome()" class="waves-effect">
+                          <i class="fa fa-home" aria-hidden="true"></i>
+                          Voltar para página inicial
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0);" (click)="goToHowWorks()" class="waves-effect">
+                          <i class="fa fa-question" aria-hidden="true"></i>
+                          Saber como funciona
+                        </a>
+                    </li>
+                    <li>
+                      <a href="javascript:void(0);" (click)="goToSearch()" class="waves-effect">
+                          <i class="fa fa-search" aria-hidden="true"></i>
+                          Procurar por um carro agora mesmo!
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+            </div>
+            <div class="separator"></div>
+            <div class="right-side col s6">
+               <div class="main-title">
+                    <h3>Comece agora mesmo!</h3>
+                </div>
+                <div class="start-share">
+                  <span class="title-text">
+                      Faça o login seu login e não perca tempo.
+                  </span>
+                  <div class="sign-in">
+                    <button (click)="goToLogin()" class="btn waves-effect waves-light" type="submit" name="action">Entrar
+                      <i class="fa fa-sign-in" aria-hidden="true"></i>
+                    </button>
+                  </div>
+                </div>
+            </div>
+          </div>
+        </article>
+    </div>
+    <!--end-container-->
+  </section>
+  <!--end-share-explain-->
+
+</main>

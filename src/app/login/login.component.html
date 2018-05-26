@@ -1,0 +1,177 @@
+<main id="login">       
+     <div class="close-btn-header">
+            <a href="javascript:void(0);" (click)="goToHome()" class="waves-effect waves-red btn-flat">
+                <i class="fa fa-times" aria-hidden="true"></i></a>
+          </div>
+  <section id="authentication-side">
+    <div class="login-wrapping">
+       
+      <div class="container">
+          
+          <div class="title-container">
+              <div class="logo">
+                  <img src="../assets/img/logo/Logo_Lokkr-w.fw.png" alt="logo_marca" />
+              </div>
+              <div class="title-style">
+                <span>Olá! Continue conectado ao Lokkr.</span>
+              </div>
+              <div>
+                <span>Faça o login de sua conta aqui: </span>
+              </div>
+          </div>
+          <div class="form">
+            <div class="input-field">
+                <input (keyup.enter)="tryLogin()" [(ngModel)]="currentEmail" id="email" type="email"  class="validate" placeholder="Endereço de e-mail">
+                <label for="email" data-error="verifique o e-mail digitado"></label>
+            </div>
+            <div class="input-field">
+                <input (keyup.enter)="tryLogin()" [(ngModel)]="currentSenha" id="password" type="password" class="validate" placeholder="Senha">
+            </div>
+            <div class="forgotten-pwd">
+                <a href="#modal1" >Esqueceu a senha?</a> 
+
+                <div id="modal1" class="modal">
+                    <div class="modal-footer">
+                    <a href="javascript:void(0);" (click)="toCloseModal()" class="waves-effect waves-red btn-flat">
+                        <i class="fa fa-times" aria-hidden="true"></i></a>
+                    </div>
+                    <div class="modal-content">
+                        <h5>Esqueceu a senha? </h5>
+                        <div class="container">
+                            <span><h5> <small>Digite aqui o seu e-mail cadastrado no sistema</small> </h5></span>
+                            <div class="input-field">
+                                <input [(ngModel)]="currentEmailResetPw" id="lost-email" type="email" placeholder="Endereço de e-mail">
+                                <label for="lost-email" data-error="verifique o e-mail digitado"></label>
+                            </div>
+                            <span>
+                                Iremos enviar para o seu e-mail seus dados de acesso!
+                                <br>Certifique-se que o e-mail cadastrado é mesmo que você
+                                está digitando.
+                            </span>
+                            <br><br>
+                            <div class="container">
+                                <button (click)="sendEmail()" class="btn waves-effect waves-light" 
+                                type="submit" name="action">Enviar</button>
+                            </div>
+                        </div> 
+                    </div>
+                    
+                </div>
+
+            </div>
+            <div class="sign-in">
+                <div *ngIf="checkAuth" class="wait">
+                    <span>Aguarde...</span>
+                    <div class="progress">
+                        <div class="indeterminate"></div>
+                    </div>
+                </div>
+                <button *ngIf="!checkAuth" class="btn waves-effect waves-light" (click)="tryLogin()" type="submit" name="action">Entrar</button>
+            </div>
+            <div class="or-line"><span class="middle-text">ou</span></div>
+            <div class="other-login">
+                <div class="fb"> 
+                    <button class="btn waves-effect waves-light">
+                        <span class="complete-txt"> Entrar com Facebook </span>
+                        <span class="sumup-txt"> Entrar </span>
+                        <i class="fa fa-facebook left" aria-hidden="true"></i>
+                </button>
+                </div>
+                <div class="ggle"> 
+                    <button class="btn waves-effect waves-light">
+                        <span class="complete-txt"> Entrar com Google </span>
+                        <span class="sumup-txt"> Entrar</span>
+                        <img class="left icon-ggle" src="../assets/img/google_icon (pixabay).png" alt="icon-google"/>
+                    </button>
+                </div>
+            </div>
+          </div>
+          <div class="create-account">
+             <span>Não tem uma conta?  <a href="javascript:void(0);" (click)="goToRegister()"> <span class="signup"> Cadastrar-me</span></a></span> 
+          </div>
+          
+        </div>
+      <!--end-container-->
+    </div>
+    <!--end-container-->
+  </section>
+  <!--end-left-side-->
+  
+ <section id="image-side">
+    <div class="container">
+       <div class="slider">
+            <ul class="slides">
+                <li>
+                    <img src="../assets/img/login-page/photo1.jpg" alt="img-slide1">
+                </li>
+                <li>
+                    <img src="../assets/img/login-page/photo2.jpg" alt="img-slide2">
+                </li>
+                 <li>
+                    <img src="../assets/img/login-page/photo3.jpg" alt="img-slide3">
+                </li>
+                 <li>
+                    <img src="../assets/img/login-page/photo4.jpg" alt="img-slide4">
+                </li>
+                 <li>
+                    <img src="../assets/img/login-page/photo5.jpg" alt="img-slide5">
+                </li>
+                 <li>
+                    <img src="../assets/img/login-page/photo6.jpg" alt="img-slide6">
+                </li>
+            </ul>
+        </div>
+        <div class="content-adv">
+                <div class="content">
+                    <div>
+                        <span>
+                            "Aproveite mais, gaste menos"
+                        </span>
+                    </div>
+                
+                    <div>
+                        <span>
+                            <span><small> Fundador lokkr </small>- <span class="assignature">Gustavo Melo </span> </span>
+                        </span>
+                    </div>
+                </div>
+                <div class="how-work">
+                        <button class="btn waves-effect waves-light" (click)="goToHowWorks()" type="button" name="action">Como funciona?</button>
+                </div>
+            </div>
+        <!--</div>-->
+    </div>
+  </section>
+  <!--end-left-side-->
+
+    <section id="modal-popup"> 
+        <div id="modal2" class="modal">
+             <div class="icon-modal success-icon">
+                <i class="material-icons">done</i>
+            </div>
+            <div class="modal-content">
+                <span>{{modalMsg}}</span>
+            </div>
+            <div class="modal-footer">
+                <a href="javascript:void(0);" class="modal-action modal-close waves-effect waves-green btn-flat">Ok</a>
+            </div>
+        </div>
+    </section> 
+
+
+    <section id="modal-popup"> 
+        <div id="modal3" class="modal">
+             <div class="icon-modal error-icon">
+                 <span>{{modalSignal}}</span>
+            </div>
+            <div class="modal-content">
+                <span>{{modalMsg}}</span>
+            </div>
+            <div class="modal-footer error-footer">
+                <a href="javascript:void(0);" class="modal-action modal-close waves-effect waves-green btn-flat">Ok</a>
+            </div>
+        </div>
+    </section> 
+
+</main>
+ 

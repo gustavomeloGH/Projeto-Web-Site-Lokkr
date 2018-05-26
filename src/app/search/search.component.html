@@ -1,0 +1,269 @@
+<main id="search">
+
+  <div class="row">
+     <section id="search-filter" class="col s3">
+        <article id="location">
+            <div class="input-field col s12">
+                <input [(ngModel)]="searchOptions.localizacao" placeholder="Recife, PE" id="location-input" type="text" class="validate">
+                <label class="active">Localização</label>
+            </div>
+        </article>    
+        <!--end-location-->
+<!--
+        <article id="pick-date">
+            <div class="input-field col s8">
+                <i class="material-icons prefix">schedule</i>
+                <input [(ngModel)]="searchOptions.dataInicial" type="date" id="pick-date-input" placeholder="">
+                <label class="active">De</label>
+            </div>
+            <div class="input-field col s4">
+                <input [(ngModel)]="searchOptions.horaInicial" type="time" placeholder="">
+            </div>
+        </article>    
+        <!end-pick-date>
+
+        <article id="return-date">
+            
+            <div class="input-field col s8">
+                <i class="material-icons prefix">schedule</i>
+                <input [(ngModel)]="searchOptions.dataFinal" type="date" placeholder="">
+                <label class="active">Até</label>
+            </div>
+            <div class="input-field col s4">
+                <input [(ngModel)]="searchOptions.horaFinal" type="time" placeholder="">
+            </div>
+        </article>    
+        <!end-return-date>
+
+Funcionalidades para uma futura utilidade
+-->
+
+        <article id="order">
+            <div class="row">
+                <div class="input-field col s12">
+                    <select id="selectRelevance">
+                        <option value="" disabled selected>Relevância</option>
+                        <option value="false"> Maior preço </option>
+                        <option value="true"> Menor preço </option>
+                    </select>
+                    <label class="active">Ordernar por</label>
+                </div>
+            </div>
+        </article>    
+        <!--end-order-->
+
+        <article id="color">
+            <div class="row">
+                <div class="input-field col s12">
+                    <select class="browser-default" [(ngModel)]="searchOptions.cor">
+                        <option *ngFor="let c of listCor" value="{{ c.nome }}">{{ c.nome }}</option>
+                    </select>
+                    <label class="active color-style">Cor</label>
+                </div>            
+            </div>
+        </article>
+        <!--end-color-->
+
+        <article id="car-type"> 
+            <div class="row">
+                <div class="input-field col s12">
+                  <select multiple  id="selectType">
+                        <option value="" disabled selected></option>
+                        <option value="Buggy" data-icon="../assets/img/icon-car-type/001-buggy.png" class="circle">Buggy</option>
+                        <option value="Conversivel" data-icon="../assets/img/icon-car-type/002-conversivel.png" class="circle">Conversível</option>
+                        <option value="Hatch" data-icon="../assets/img/icon-car-type/003-hatch.png" class="circle">Hatch</option>
+                        <option value="Minivan" data-icon="../assets/img/icon-car-type/004-minivan.png" class="circle">Minivan</option>
+                        <option value="Picape" data-icon="../assets/img/icon-car-type/005-picape.png" class="circle">Picape</option>
+                        <option value="Seda" data-icon="../assets/img/icon-car-type/006-seda.png" class="circle">Sedã</option>
+                        <option value="Esportivo" data-icon="../assets/img/icon-car-type/007-esportivo.png" class="circle">Esportivo</option>
+                        <option value="Van" data-icon="../assets/img/icon-car-type/008-van.png" class="circle">Van</option>
+                    </select>
+                    <label>Tipo de carro</label>
+                </div>
+                
+            </div>
+        </article>    
+        <!--end-cart-type-->
+
+
+        <article id="details-data">
+            <div class="row">
+
+                <div class="input-field col s12">
+                    <select multiple id="selectDetail">
+                        <option value="" disabled selected></option>
+                        <option value="Airbag" data-icon="../assets/img/details-car/airbag.png" class="circle">Air Bag</option>
+                        <option value="Abs" data-icon="../assets/img/details-car/abs.png" class="circle">Freio ABS</option>
+                        <option value="Direcao Hidraulica" data-icon="../assets/img/details-car/hidro.png" class="circle">Direção Hidro/Ele</option>
+                        <option value="Cambio Automatico" data-icon="../assets/img/details-car/gearbox.png" class="circle">Cambio Automático</option>
+                        <option value="Blindado" data-icon="../assets/img/details-car/armored.png" class="circle">Blindado</option>
+                        <option value="4x4" data-icon="../assets/img/details-car/4x4.png" class="circle">4X4</option>
+                        <option value="Ar-Condicionado" data-icon="../assets/img/details-car/snow.png" class="circle">Ar Condicionado</option>
+                        <option value="Usb" data-icon="../assets/img/details-car/usb.png" class="circle">USB</option>
+                        <option value="Gps" data-icon="../assets/img/details-car/gps.png" class="circle">GPS</option>
+                    </select>
+                    <label>Detalhes</label>
+                </div>
+            </div>
+        </article>
+        <!--end-details-data-->
+        <div class="search-btn col s12">
+        <button (click)="search()" class="btn waves-effect waves-light" type="submit" name="action">
+            <i class="fa fa-search" aria-hidden="true"></i>
+            Filtrar
+        </button>
+    </div>
+    </section>
+    <!--end-search-filter-->
+    
+
+    <section id="result" class="col s6 offset-s5">
+        
+        <div *ngIf="isEmpty" class="notOk col s6">
+            <i class="material-icons">sentiment_very_dissatisfied</i>
+            <div>
+                <span>Não foi encontrado nenhum resultado para sua busca</span>
+            </div>
+        </div>
+        <div class="show-result">
+            <ul *ngFor="let current of mergeCarsUsers">
+               <li>
+                    <div class="row" (click)="goToCarView(current.$key)"> 
+                        <div class="show-car-image" width="390" height="250">
+                            <img class="responsive-img" [src]="current.imgCar[0]" class="responsive-img" alt="car-image"> 
+                            <div class="show-price">
+                                <span>
+                                    <span class="currency">R$</span> 
+                                    <span class="value">{{current.preco}}</span>
+                                    <span class="day-info">por dia</span>
+                                </span>
+                            </div>
+                        </div> 
+                        <div class="content-result">
+                            <div class="row">
+                                <div class="show-car-model col s12">
+                                    <span>{{current.marca}} {{current.modelo}} <span class="years-style">{{current.ano}}</span></span>
+                                </div>
+                            </div>  
+                            <div class="row content col s12">
+                                <div class="col s2"> 
+                                    <div class="show-profile-photo">
+                                        <img [src]= "current.imgUser" alt="profile-photo" />
+                                    </div>
+                                </div>
+                                <div class="col s9 sharing-info">
+                                    <div class="show-profile-name">
+                                        <span><img src="../assets/img/details-car/user.png" alt="icon-user"/>{{current.nome}} {{current.sobrenome}}</span>
+                                    </div>
+                                    <div class="show-location">
+                                        <span><img src="../assets/img/details-car/gps.png" alt="icom-location"/> {{current.bairro}} - {{current.cidade}}/{{current.estado}}</span>
+                                    </div>
+                                </div>     
+                            </div>
+                        </div>
+                    </div>
+                </li> 
+            </ul>
+            <div *ngIf="!mergeCarsUsers" class="progress">
+                <div class="indeterminate"></div>
+            </div>
+        </div> 
+        <!--end-show-result-->
+    </section>
+    <!--end-result-->
+
+  </div>
+  <!--end-row-->  
+
+
+    <section id="modal-wrapping">
+        <div class="modal-btn">
+            <a class="modal-trigger waves-effect waves-light btn" href="#modal1">
+                 <img src="../assets/img/search-page/filters.png" alt="filter-icon">
+                 <span> Filtros </span>
+            </a>
+        </div>
+        <div id="modal1" class="modal bottom-sheet">
+            <div class="modal-title">
+                 <img src="../assets/img/search-page/filters.png" alt="filter-icon">
+                <span>Filtros</span>
+            </div>
+            <div class="modal-content">
+
+                <article id="order">
+                    <div class="row">
+                        <div class="input-field">
+                            <select>
+                                <option value="" disabled selected>Relevância</option>
+                                <option value="1">Menor preço ↓</option>
+                                <option value="2">Maior preço ↑</option>
+                            </select>
+                            <label class="active">Ordernar por</label>
+                        </div>
+                    </div>
+                </article>    
+                <!--end-order-->
+
+                <article id="brand">
+                    <div class="row">
+                        <div class="input-field">
+                            <select>
+                                <option value="" disabled selected></option>
+                                <option value="1">Option 1</option>
+                                <option value="2">Option 2</option>
+                                <option value="3">Option 3</option>
+                            </select>
+                            <label class="active">Cor</label>
+                        </div>
+                    </div>
+                </article>
+                <!--end-brand-->
+
+                <article id="car-type"> 
+                    <div class="row">
+                        <div class="input-field">
+                        <select multiple>
+                                <option value="" disabled selected></option>
+                                <option value="1" data-icon="../assets/img/icon-car-type/001-buggy.png" class="circle">Buggy</option>
+                                <option value="2" data-icon="../assets/img/icon-car-type/002-conversivel.png" class="circle">Conversível</option>
+                                <option value="3" data-icon="../assets/img/icon-car-type/003-hatch.png" class="circle">Hatch</option>
+                                <option value="4" data-icon="../assets/img/icon-car-type/004-minivan.png" class="circle">Minivan</option>
+                                <option value="5" data-icon="../assets/img/icon-car-type/005-picape.png" class="circle">Picape</option>
+                                <option value="6" data-icon="../assets/img/icon-car-type/006-seda.png" class="circle">Sedã</option>
+                                <option value="7" data-icon="../assets/img/icon-car-type/007-esportivo.png" class="circle">Esportivo</option>
+                                <option value="8" data-icon="../assets/img/icon-car-type/008-van.png" class="circle">Vã</option>
+                            </select>
+                            <label>Tipo de carro</label>
+                        </div>
+                        
+                    </div>
+                </article>    
+                <!--end-cart-type-->
+
+
+                <article id="details-data">
+                    <div class="row">
+
+                        <div class="input-field">
+                            <select multiple>
+                                <option value="" disabled selected></option>
+                                <option value="1" data-icon="../assets/img/details-car/airbag.png" class="circle">Air Bag</option>
+                                <option value="2" data-icon="../assets/img/details-car/abs.png" class="circle">Freio ABS</option>
+                                <option value="3" data-icon="../assets/img/details-car/hidro.png" class="circle">Direção Hidro/Ele</option>
+                                <option value="4" data-icon="../assets/img/details-car/gearbox.png" class="circle">Cambio Automático</option>
+                                <option value="5" data-icon="../assets/img/details-car/armored.png" class="circle">Blindado</option>
+                                <option value="6" data-icon="../assets/img/details-car/4x4.png" class="circle">4X4</option>
+                                <option value="7" data-icon="../assets/img/details-car/snow.png" class="circle">Ar Condicionado</option>
+                                <option value="8" data-icon="../assets/img/details-car/usb.png" class="circle">USB</option>
+                                <option value="9" data-icon="../assets/img/details-car/gps.png" class="circle">GPS</option>
+                            </select>
+                            <label>Detalhes</label>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+</main>
+

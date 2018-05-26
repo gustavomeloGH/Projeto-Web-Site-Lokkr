@@ -1,0 +1,474 @@
+@import url('https://fonts.googleapis.com/css?family=Lato');
+@import url('https://fonts.googleapis.com/css?family=Righteous');
+
+#dashboard {
+  font-family: 'Lato', sans-serif;
+  overflow-x:hidden!important;
+  color: #484848;
+  background: #ffffff;
+}
+
+#dashboard .center-text {
+  text-align: center;
+}
+
+#dashboard .bold {
+  font-weight: 800;
+}
+/*---GLOBAL-WRAPPER--*/
+
+#global-wrapper {
+  position: relative;
+  height: 100%;
+  width: 100%;
+}
+
+#global-wrapper #aside-wrapper {
+    background: white;
+    border-right: 1px solid #eeeeee;
+}
+
+
+
+#global-wrapper .dashboard-title {
+    margin-top: -20px;
+    color: #858e99;
+}
+
+#global-wrapper aside {
+  position: relative;
+  width: 300px;
+  float: left;
+  text-align: center;
+  height: 100%;
+  transition: all 0.3s ease-in-out;
+  border-left: 2px solid silver;
+}
+
+#global-wrapper .profile-img {
+    border-radius: 100%;
+    margin: 25px auto;
+    width: 100px;
+    object-fit: cover;
+    height: 100px;
+    transition: all 0.3s ease-in-out;
+}
+
+#global-wrapper aside ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+
+#global-wrapper aside .separator {
+   margin-top: 30px;
+   visibility: hidden;
+}
+
+#global-wrapper aside ul:last-child {
+    margin-bottom: 50px;
+}
+
+#global-wrapper aside ul li {
+  padding: 20px 0 10px 0;
+  cursor: pointer;
+  border: 1px solid #f4f4f4;
+}
+
+
+#global-wrapper aside ul li:hover {
+  background: ghostwhite;
+}
+#global-wrapper aside ul li:hover i {
+  color: #0FA0EB !important;
+}
+
+#global-wrapper aside .nav-item {
+  display: inline-block;
+  width: 150px;
+  overflow: hidden;
+  height: 30px;
+  transition: all 0.3s ease-in-out;
+  white-space: nowrap;
+  color: #585858;
+}
+
+#global-wrapper aside ul li .nav-item i {
+  float: left;
+  position: relative;
+  top: -3px;
+  color:#585858;
+  font-size: 30px;
+}
+
+#global-wrapper aside ul .active {
+    background: ghostwhite;
+}
+#global-wrapper aside ul .active i {
+  color: #0FA0EB !important;
+}
+#global-wrapper aside ul:nth-child(3) {
+    position: relative;
+    margin-top: 22px;
+}
+
+#global-wrapper main {
+  float: left;
+  width: calc(100% - 300px);
+  height: 100%;
+  border-left: 1px solid #eeeeee;
+  transition: all 0.3s ease-in-out;
+}
+
+#global-wrapper .container-wrapper {
+    margin-left: 10%;
+}
+
+#global-wrapper main .overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.81);
+    z-index: 9999;
+    text-align: center;
+    color: #ffffff;
+    padding: 28px;
+    font-size: 21px;
+}
+
+#global-wrapper main .overlay i {
+    font-size: 42px;
+    font-weight: 600;
+}
+
+/*----MODAL-CAR---*/
+#modal-dashboard {
+    text-align: center;
+}
+
+#modal-dashboard .icon-modal {
+    border: 4px solid rgba(209, 209, 209, 0.64);
+    border-radius: 100%;
+    width: 90px;
+    height: 90px;
+    margin-left: 40%;
+    margin-top: 21px;
+}
+
+#modal-dashboard .modal {
+    width: 668px;
+    max-height: 254px;
+}
+
+#modal-dashboard .success-icon {
+    font-size: 80px;
+    color: #a6db8a;
+}
+
+#modal-dashboard .error-icon {
+    font-size: 80px;
+    color: #ff4e4e;
+    line-height: 76px;
+    font-weight: 700;
+}
+
+#modal-dashboard h4 {
+    font-size: 19px;
+}
+
+#modal-dashboard .modal-footer {
+    margin-top: -36px;
+    margin-bottom: 20px;
+    margin-left: -42%;
+}
+
+#modal-dashboard .modal-footer a {
+    margin-top: 12px;
+    color: white;
+    font-weight: 600;
+    width: 120px;
+}
+
+
+/*----MAIN----*/
+#main .notOk {
+    text-align: center;
+    font-size: 24px;
+    color: #d5d5d5;
+    padding: 40px 135px 135px 135px;
+}
+
+#main .notOk i {
+    font-size: 60px;
+}
+
+
+#main .title {
+   padding: 30px;
+   color: #7b7b7b;
+}
+
+#main .list-box li {
+    cursor: pointer;
+    background: rgba(234, 234, 234, 0.25);
+    margin: 11px 9% 34px 11px;
+    display: -webkit-inline-box;
+    padding: 15px;
+    box-shadow: 0 2px 3px 2px rgba(0, 0, 0, 0.14), 
+    0 1px 5px 0 rgba(199, 199, 199, 0.12), 0 3px 1px -2px rgba(226, 226, 226, 0.2);
+}
+
+#main .list-box li .style-box img{
+    -o-object-fit: cover;
+    object-fit: cover;
+} 
+
+#main .uppercase {
+    text-transform: uppercase;
+}
+
+#main .small-min {
+    font-size: 14px;
+}
+
+#main .rating > span:hover:before {
+   content: "\2605";
+   position: absolute;
+}
+
+#main .rating {
+  unicode-bidi: bidi-override;
+  direction: rtl;
+}
+#main .rating > span:hover:before,
+#main .rating > span:hover ~ span:before {
+    content: "\2605";
+    position: absolute;
+    color: rgb(228, 224, 33);
+    text-shadow: 2px 1px 18px rgba(208, 208, 0, 0.97);
+}
+
+
+/*--historic---*/
+
+#main .historic { 
+    margin-top: -61px;
+    position: absolute;
+    margin-left: 50%;
+    width: 280px;
+    background: white;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.26);
+
+}
+
+#main .historic li {
+    padding: 6px 0px 14px 10px;
+    border-bottom: 1px dashed #d3d3d3;
+}
+
+#main .historic i {
+  color: #02e702;
+  position: absolute;
+  margin-left: -28px;
+}
+
+#main .style-new .content-img img {
+    height: 188px;
+    width: 150px;
+    object-fit: cover;
+}
+
+#main .historic .orange-txt {
+    color: #bd6600;
+}
+
+
+/*---PROGRESS---*/
+#dashboard .progress-wrapper {
+    padding-top: 300px;
+}
+
+#dashboard .progress-car {
+    width: calc(35% - 300px);
+    margin: auto;
+}
+
+/*----NEWS---*/
+
+#news .news-ok li {
+    position: relative;
+    width: 428px;
+    height: 220px;
+    padding: 0;
+}
+
+#news .news-ok li .style-new {
+    padding: 15px;
+}
+    
+#news .container-wrapper .content-img {
+      margin-left: -10px;
+}
+
+#news .container-wrapper .content-img {
+      margin-left: -10px;
+}
+
+#news .container-wrapper .content-text {
+  font-size: 16px;
+}
+
+#news .color-gray {
+    color: #737373;
+}
+
+#news .evaluation-range .text-info {
+    margin-top: -20px;
+}
+
+#news .evaluation-range .rating span {
+    font-size: 42px;
+    font-weight: 100;
+    color: #fbff65;
+}
+
+#news .evaluation.overlay {
+    padding-top: 50px;
+}
+
+
+
+/*----SOLICITATION----*/
+
+
+#solicitation .list-box li {
+    position: relative;
+    width: 322px;
+    height: 190px;
+}
+
+
+#solicitation .list-box li .style-box img {
+    height: 80px;
+    width: 86px;
+    border-radius: 100%;
+}
+
+#solicitation .confirm-delivery {
+    font-size: 17px;
+}
+
+
+#solicitation .confirm-delivery .confirm-button a {
+    margin-top: 10px;
+    height: 48px;
+    border-radius: 3px;
+    color: white;
+    background: rgba(142, 142, 142, 0.2);
+    line-height: 5px;
+    padding: 18px;
+    font-weight: 600;
+    width: 100%;
+}
+
+#solicitation .confirm-delivery .confirm-button a:hover {
+    background: rgba(0, 0, 0, 0.2);
+}
+
+#solicitation .confirm-delivery .confirm-button {
+    margin-top: -5px;
+}
+
+/*--register--*/
+ #solicitation .register-car  .register-car-notOk .btn {
+      margin-top: 15px;
+      background-color: rgb(137, 185, 255);
+      height: 46px;
+}
+
+/*--shared-data--*/
+
+#solicitation .shared-data {
+    background: white;
+    padding: 21px 10px 10px 10px;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+}
+
+#solicitation .shared-data .img-data img {
+    height: 135px;
+    width: 135px;
+    border-radius: 100%;
+    object-fit: cover;
+    -o-object-fit: cover;
+    margin-top: 22px;
+    margin-left: 17px;
+}
+
+#solicitation .shared-data ul {
+  font-size: 17px;
+}
+
+#solicitation .list-box li {
+    padding: 0;
+}
+
+#solicitation .list-box li .content-request {
+    padding: 10px;
+}
+
+#solicitation .shared-data .title-data {
+    text-transform: uppercase;
+    color: #24559a;    
+    margin: 12px 0 13px 0;
+    border-bottom: 1px solid #24559a;
+}
+
+#solicitation .shared-data .btn-submit .ask-solicitation {
+    margin: 30px 20px;
+    font-size: 25px;
+    color: #919191;
+}
+
+#solicitation .shared-data .btn-submit .agree {
+     background-color: #13ce66;
+
+}
+
+#solicitation .shared-data .btn-submit .recuse {
+    background: #ff3232;
+}
+
+
+/*--------SETTINGS------*/
+#settings .list-settings li {
+    margin-left: 38px;
+    margin-bottom: 30px;
+    float: left;
+}
+
+#settings .container {
+    width: 85%;
+}
+
+#settings .list-settings i {
+    font-size: 80px;
+    padding: 20px 0 26px 22px;
+    color: rgba(128, 128, 128, 0.75);
+}
+
+#settings .list-settings .btn {
+    height: 136px;
+    padding: 12px;
+    width: 168px;
+    text-transform: none;
+    line-height: 16px;
+    display: -ms-inline-grid;
+    display: inline-grid;
+    border-radius: 5px;
+    background: white;
+    color: #919191;
+}
+
+#settings .list-settings .red-icon {
+    color: rgb(208, 91, 91);
+}
